@@ -15,7 +15,7 @@ Formerly *B2B Stablecoin Escrow* — Avalanche Builder Day @ Chengdu · 2026-09-
 | Fuji deploy | ✅ Escrow [`0x6df9…0Eeb`](https://testnet.snowtrace.io/address/0x6df99e9f713aB9ECb57fa4842660CBdE0c000Eeb) · USDC [`0x0bA3…8ff1`](https://testnet.snowtrace.io/address/0x0bA33E7Ac0c997fF627a8AE1FF86f1ca01618ff1) |
 | Happy Path | ✅ Project `#0` Completed（Seller +200 USDC） |
 | Local dApp | ✅ http://localhost:3000 · slides: `/demo-slides.html` |
-| Vercel | ❌ CLI `fetch failed`（本地 `pnpm build` 通过） |
+| Vercel | ✅ https://milepay-onecheeses-projects.vercel.app |
 
 ---
 
