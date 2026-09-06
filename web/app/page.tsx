@@ -155,7 +155,7 @@ export default function Home() {
                   href="/dashboard"
                   className="rounded-full border border-white/10 px-6 py-3 text-xs font-bold uppercase tracking-widest text-primary-300 transition-colors hover:border-accent-500/40 hover:text-accent-400 sm:px-8 sm:py-4 sm:text-sm"
                 >
-                  查看 Demo
+                  查看项目
                 </Link>
               </div>
               <p className="mt-5 text-xs font-medium uppercase tracking-[0.18em] text-primary-600">
