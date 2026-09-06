@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>B2B Stablecoin Escrow — Demo Slides</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; font-family: ui-sans-serif, system-ui, sans-serif; background: #020617; color: #f8fafc; }
+    .deck { height: 100%; }
+    .slide { display: none; height: 100%; padding: 64px 80px; flex-direction: column; justify-content: center; }
+    .slide.active { display: flex; }
+    h1 { font-size: 56px; margin: 0 0 16px; }
+    h2 { font-size: 40px; margin: 0 0 24px; color: #34d399; }
+    p, li { font-size: 24px; line-height: 1.5; color: #cbd5e1; }
+    .kicker { letter-spacing: .2em; text-transform: uppercase; color: #34d399; font-size: 14px; margin-bottom: 16px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 32px; }
+    .card { border: 1px solid #334155; border-radius: 16px; padding: 24px; background: #0f172a; }
+    .card b { display: block; font-size: 28px; color: #fff; margin-bottom: 8px; }
+    .hint { position: fixed; bottom: 20px; right: 28px; color: #64748b; font-size: 14px; }
+    code { color: #6ee7b7; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <div class="deck">
+    <section class="slide active">
+      <div class="kicker">Avalanche Builder Day · Chengdu</div>
+      <h1>B2B Stablecoin Escrow</h1>
+      <p>跨境企业外包：先付款还是先交付？<br/>买方锁 USDC，按里程碑交付，代码 2 秒释放。0% 抽成。</p>
+      <div class="row">
+        <div class="card"><b>Upwork / Escrow.com</b>抽 5–20%，到账 3–7 天</div>
+        <div class="card"><b>银行电汇 / L/C</b>$50–200 手续费，中小企业用不起</div>
+        <div class="card"><b>我们</b>Avalanche 最终性 ~2s，Gas &lt;$0.01</div>
+      </div>
+    </section>
+    <section class="slide">
+      <h2>架构</h2>
+      <p>Buyer / Seller / Arbitrator → Next.js + RainbowKit + Core → Fuji C-Chain</p>
+      <div class="row">
+        <div class="card"><b>Escrow.sol</b>里程碑状态机 + 三个逃生舱</div>
+        <div class="card"><b>MockUSDC</b>Fuji 演示；主网换 Circle 原生 USDC</div>
+        <div class="card"><b>逃生舱</b>超时自取 / 逾期退款 / 仲裁按 bps 分</div>
+      </div>
+      <p style="margin-top:32px">Escrow <code>0x6df99e9f713aB9ECb57fa4842660CBdE0c000Eeb</code><br/>USDC <code>0x0bA33E7Ac0c997fF627a8AE1FF86f1ca01618ff1</code></p>
+    </section>
+    <section class="slide">
+      <h2>Roadmap</h2>
+      <p>短期：Chainlink Automation 无人值守释放<br/>中期：Circle CCTP 跨链 USDC<br/>长期：Kleros / 合规 Subnet 企业 SaaS，托管费 0.3%</p>
+      <p style="margin-top:40px;color:#34d399">谢谢。打开 localhost:3000，Buyer 点 Approve，看 2 秒到账。</p>
+    </section>
+  </div>
+  <div class="hint">← → 或空格翻页</div>
+  <script>
+    const slides = [...document.querySelectorAll(".slide")];
+    let i = 0;
+    const show = (n) => {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, idx) => s.classList.toggle("active", idx === i));
+    };
+    window.addEventListener("keydown", (e) => {
+      if (["ArrowRight", " ", "PageDown"].includes(e.key)) show(i + 1);
+      if (["ArrowLeft", "PageUp"].includes(e.key)) show(i - 1);
+    });
+  </script>
+</body>
+</html>
