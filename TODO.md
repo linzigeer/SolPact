@@ -114,7 +114,7 @@
 - [ ] 录制 3–5 分钟完整流程视频 → 桌面 `demo-backup.mp4`（需你本机录屏）
 - [ ] 读 `docs/05-demo-day.md` 并排练（需人）
 - [x] Demo slides：`docs/demo-slides.html` 与 http://localhost:3000/demo-slides.html
-- [ ] `git add && git commit`（见下方；push / GitHub Public 需你有 remote）
+- [x] `git add && git commit`（本地初始提交已完成；push / GitHub Public 需你加 remote）
 - [ ] GitHub repo Public + README 填团队成员
 
 ---
