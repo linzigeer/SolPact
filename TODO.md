@@ -1,4 +1,4 @@
-# TODO — B2B Stablecoin Escrow
+# TODO — MilePay
 
 > ⏰ Coding 时间窗口：13:00–17:30（4.5h）
 > 📌 规则：P0 = 不做就不能 Demo，P1 = 加分项，P2 = Roadmap 话术

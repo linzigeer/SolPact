@@ -12,7 +12,7 @@ export function DeadlineCountdown({ deadline }: { deadline: bigint }) {
 
   const left = Number(deadline) * 1000 - now;
   if (left <= 0) {
-    return <span className="text-red-400 font-medium">Overdue</span>;
+    return <span className="font-medium text-red-400">已逾期</span>;
   }
 
   const d = Math.floor(left / 86_400_000);
@@ -21,8 +21,8 @@ export function DeadlineCountdown({ deadline }: { deadline: bigint }) {
   const s = Math.floor((left % 60_000) / 1000);
 
   return (
-    <span className="text-amber-400 font-mono">
-      {d}d {h}h {m}m {s}s left
+    <span className="font-mono text-amber-400">
+      剩余 {d}天 {h}时 {m}分 {s}秒
     </span>
   );
 }

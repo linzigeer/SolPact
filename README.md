@@ -1,8 +1,8 @@
-# B2B Stablecoin Escrow
+# MilePay
 
 > Trustless milestone-based B2B payments on Avalanche. Buyer locks USDC, seller delivers, code releases funds in ~2 seconds. 0% platform fee, <$0.01 gas.
 
-**Avalanche Builder Day @ Chengdu · 2026-09-06**
+Formerly *B2B Stablecoin Escrow* — Avalanche Builder Day @ Chengdu · 2026-09-06
 
 ---
 

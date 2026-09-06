@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useWriteContract } from "wagmi";
+import { ChevronDown } from "lucide-react";
 import { escrowContract, MilestoneStatus } from "@/lib/contracts";
 import { fmtUSDC, fmtTime } from "@/lib/format";
 import { DeadlineCountdown } from "@/components/DeadlineCountdown";
@@ -11,13 +12,22 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
+import { cn } from "@/lib/utils";
 
-const COLOR: Record<string, string> = {
-  Pending: "bg-slate-500",
-  Submitted: "bg-amber-500",
-  Approved: "bg-emerald-500",
-  Disputed: "bg-red-500",
-  Refunded: "bg-slate-700",
+const STATUS_STYLE: Record<string, string> = {
+  Pending: "border-primary-500/40 bg-primary-800/50 text-primary-300",
+  Submitted: "border-amber-500/40 bg-amber-500/10 text-amber-300",
+  Approved: "border-green-500/40 bg-green-500/10 text-green-400",
+  Disputed: "border-red-500/40 bg-red-500/10 text-red-400",
+  Refunded: "border-primary-600/40 bg-primary-900 text-primary-500",
+};
+
+const STATUS_CN: Record<string, string> = {
+  Pending: "待交付",
+  Submitted: "已提交",
+  Approved: "已释放",
+  Disputed: "争议中",
+  Refunded: "已退款",
 };
 
 type Role = "buyer" | "seller" | "arbitrator" | "viewer";
@@ -44,6 +54,7 @@ export function MilestoneCard({
 }) {
   const [uri, setUri] = useState("");
   const [sellerShare, setSellerShare] = useState("5000");
+  const [moreOpen, setMoreOpen] = useState(false);
   const { writeContractAsync, isPending } = useWriteContract();
   const statusName = MilestoneStatus[milestone.status] || "Pending";
 
@@ -54,7 +65,7 @@ export function MilestoneCard({
         functionName: fn,
         args,
       });
-      toast.success(`${fn} sent`, {
+      toast.success(`${fn} 已发送`, {
         action: {
           label: "Snowtrace",
           onClick: () => window.open(snowtraceTx(hash), "_blank"),
@@ -62,105 +73,91 @@ export function MilestoneCard({
       });
     } catch (e: unknown) {
       const err = e as { shortMessage?: string; message?: string };
-      toast.error(err.shortMessage || err.message || "Transaction failed");
+      toast.error(err.shortMessage || err.message || "交易失败");
     }
   };
 
+  const showPrimarySubmit =
+    role === "seller" && statusName === "Pending" && projectFunded;
+  const showPrimaryApprove =
+    role === "buyer" && statusName === "Submitted";
+  const showArbitrate =
+    role === "arbitrator" && statusName === "Disputed";
+
+  const hasSecondary =
+    (role === "buyer" && statusName === "Submitted") ||
+    (role === "seller" && statusName === "Submitted") ||
+    (role === "buyer" && statusName === "Pending" && projectFunded);
+
   return (
-    <Card className="p-4 space-y-3">
-      <div className="flex justify-between items-start gap-3">
-        <div className="flex-1 min-w-0">
-          <div className="font-medium">
-            #{index + 1}. {milestone.description}
-          </div>
-          <div className="text-sm text-slate-400 mt-1">
-            {fmtUSDC(milestone.amount)} · Deadline: {fmtTime(milestone.deadline)}{" "}
-            · <DeadlineCountdown deadline={milestone.deadline} />
-          </div>
+    <Card className="space-y-4 p-4 md:p-5">
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0 flex-1">
+          <p className="app-meta">里程碑 #{index + 1}</p>
+          <p className="mt-1 text-base font-black text-white md:text-lg">
+            {milestone.description}
+          </p>
+          <p className="mt-2 text-sm text-primary-400">
+            {fmtUSDC(milestone.amount)} · 截止 {fmtTime(milestone.deadline)} ·{" "}
+            <DeadlineCountdown deadline={milestone.deadline} />
+          </p>
           {milestone.deliverableURI && (
-            <div className="text-xs text-emerald-400 mt-1 break-all">
-              Delivery:{" "}
+            <p className="mt-2 break-all text-xs text-accent-400">
+              交付物：{" "}
               <a
                 href={milestone.deliverableURI}
                 target="_blank"
                 rel="noreferrer"
-                className="underline"
+                className="underline hover:text-accent-300"
               >
                 {milestone.deliverableURI}
               </a>
-            </div>
+            </p>
           )}
         </div>
-        <Badge className={COLOR[statusName]}>{statusName}</Badge>
+        <Badge className={STATUS_STYLE[statusName]}>
+          {STATUS_CN[statusName] || statusName}
+        </Badge>
       </div>
 
-      {role === "seller" && statusName === "Pending" && projectFunded && (
-        <div className="flex gap-2">
+      {showPrimarySubmit && (
+        <div className="flex flex-col gap-2 sm:flex-row">
           <Input
             value={uri}
             onChange={(e) => setUri(e.target.value)}
-            placeholder="Deliverable URL / IPFS CID"
+            placeholder="交付物 URL / IPFS CID"
+            className="flex-1"
           />
           <Button
             disabled={isPending || !uri}
+            className="animate-cta-pulse shrink-0"
             onClick={() =>
               call("submitDelivery", [projectId, BigInt(index), uri])
             }
           >
-            Submit
+            提交交付
           </Button>
         </div>
       )}
 
-      {role === "buyer" && statusName === "Submitted" && (
-        <div className="flex flex-wrap gap-2">
+      {showPrimaryApprove && (
+        <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
           <Button
-            className="bg-emerald-600"
+            className="animate-cta-pulse"
             disabled={isPending}
             onClick={() =>
               call("approveMilestone", [projectId, BigInt(index)])
             }
           >
-            ✓ Approve & Release {fmtUSDC(milestone.amount)}
-          </Button>
-          <Button
-            variant="destructive"
-            disabled={isPending}
-            onClick={() => call("raiseDispute", [projectId, BigInt(index)])}
-          >
-            Raise Dispute
+            Approve & Release {fmtUSDC(milestone.amount)}
           </Button>
         </div>
       )}
 
-      {role === "seller" && statusName === "Submitted" && (
-        <Button
-          variant="outline"
-          size="sm"
-          disabled={isPending}
-          onClick={() => call("claimAutoRelease", [projectId, BigInt(index)])}
-        >
-          Claim (if buyer unresponsive)
-        </Button>
-      )}
-
-      {role === "buyer" && statusName === "Pending" && projectFunded && (
-        <Button
-          variant="outline"
-          size="sm"
-          disabled={isPending}
-          onClick={() =>
-            call("refundOnDeadlineMiss", [projectId, BigInt(index)])
-          }
-        >
-          Refund (if seller missed deadline)
-        </Button>
-      )}
-
-      {role === "arbitrator" && statusName === "Disputed" && (
-        <div className="flex gap-2 items-center flex-wrap">
-          <span className="text-sm text-slate-400">
-            Seller share (bps, 0–10000):
+      {showArbitrate && (
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-sm text-primary-400">
+            Seller 份额 (bps, 0–10000)：
           </span>
           <Input
             value={sellerShare}
@@ -177,8 +174,71 @@ export function MilestoneCard({
               ])
             }
           >
-            Resolve
+            裁决
           </Button>
+        </div>
+      )}
+
+      {hasSecondary && (
+        <div>
+          <button
+            type="button"
+            onClick={() => setMoreOpen((o) => !o)}
+            className="flex items-center gap-1 text-xs font-bold uppercase tracking-widest text-primary-500 transition-colors hover:text-primary-300"
+          >
+            更多操作
+            <ChevronDown
+              className={cn(
+                "h-3.5 w-3.5 transition-transform",
+                moreOpen && "rotate-180"
+              )}
+            />
+          </button>
+          {moreOpen && (
+            <div className="mt-3 flex flex-wrap gap-2">
+              {role === "buyer" && statusName === "Submitted" && (
+                <Button
+                  variant="destructive"
+                  size="sm"
+                  disabled={isPending}
+                  onClick={() =>
+                    call("raiseDispute", [projectId, BigInt(index)])
+                  }
+                >
+                  发起争议
+                </Button>
+              )}
+              {role === "seller" && statusName === "Submitted" && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  disabled={isPending}
+                  onClick={() =>
+                    call("claimAutoRelease", [projectId, BigInt(index)])
+                  }
+                >
+                  超时自动领取
+                </Button>
+              )}
+              {role === "buyer" &&
+                statusName === "Pending" &&
+                projectFunded && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    disabled={isPending}
+                    onClick={() =>
+                      call("refundOnDeadlineMiss", [
+                        projectId,
+                        BigInt(index),
+                      ])
+                    }
+                  >
+                    逾期退款
+                  </Button>
+                )}
+            </div>
+          )}
         </div>
       )}
     </Card>

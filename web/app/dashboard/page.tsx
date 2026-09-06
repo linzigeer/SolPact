@@ -4,14 +4,19 @@ import { useAccount, usePublicClient } from "wagmi";
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import {
   escrowContract,
   type ProjectTuple,
 } from "@/lib/contracts";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { fmtUSDC, shortAddr } from "@/lib/format";
 import { ProjectStatusBadge } from "@/components/ProjectStatusBadge";
+import { AppShell } from "@/components/AppShell";
+import { EmptyState } from "@/components/EmptyState";
 import Link from "next/link";
 
 type ProjectRow = {
@@ -96,82 +101,141 @@ export default function Dashboard() {
   }, [load]);
 
   return (
-    <main className="min-h-screen bg-slate-950 text-white p-6 md:p-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-wrap justify-between items-center gap-4 mb-8">
-          <div>
-            <Link href="/" className="text-sm text-emerald-400 hover:underline">
-              ← Home
-            </Link>
-            <h1 className="text-3xl font-bold mt-1">My Projects</h1>
-          </div>
-          <div className="flex items-center gap-3">
-            <ConnectButton />
-            <Button onClick={() => router.push("/project/new")}>
-              + New Project
-            </Button>
-          </div>
+    <AppShell
+      breadcrumb={
+        <span>
+          <Link href="/" className="hover:text-accent-400">
+            首页
+          </Link>
+          <span className="mx-2 text-primary-700">/</span>
+          项目
+        </span>
+      }
+    >
+      <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h1 className="text-3xl font-black tracking-tight text-white md:text-4xl">
+            我的项目
+          </h1>
+          <p className="mt-2 text-sm text-primary-400">
+            与你相关的托管合约 · Avalanche Fuji
+          </p>
         </div>
+        <Button
+          className="sm:hidden"
+          onClick={() => router.push("/project/new")}
+        >
+          创建项目
+        </Button>
+      </div>
 
-        {!isConnected && (
-          <Card className="p-12 text-center text-slate-400">
-            Connect your wallet to see projects.
+      {!isConnected && (
+        <EmptyState
+          title="连接钱包查看项目"
+          description="使用 Avalanche Core 或兼容钱包连接 Fuji 测试网，查看你作为 Buyer / Seller 的托管项目。"
+          action={<ConnectButton />}
+        />
+      )}
+
+      {isConnected &&
+        escrowContract.address ===
+          "0x0000000000000000000000000000000000000000" && (
+          <Card className="border-amber-500/40 bg-amber-500/10 p-6 text-amber-200">
+            合约地址未配置。请在{" "}
+            <code className="text-xs">.env.local</code> 中设置{" "}
+            <code className="text-xs">NEXT_PUBLIC_ESCROW_ADDRESS</code> 与{" "}
+            <code className="text-xs">NEXT_PUBLIC_USDC_ADDRESS</code>。
           </Card>
         )}
 
-        {isConnected &&
-          escrowContract.address ===
-            "0x0000000000000000000000000000000000000000" && (
-            <Card className="p-6 text-amber-300 border-amber-700">
-              Contract address not set. Add{" "}
-              <code className="text-xs">NEXT_PUBLIC_ESCROW_ADDRESS</code> and{" "}
-              <code className="text-xs">NEXT_PUBLIC_USDC_ADDRESS</code> to{" "}
-              <code className="text-xs">.env.local</code> after deploying to
-              Fuji.
-            </Card>
-          )}
-
-        {isConnected && (
-          <div className="grid gap-4">
+      {isConnected &&
+        escrowContract.address !==
+          "0x0000000000000000000000000000000000000000" && (
+          <div className="grid gap-3">
             {loading && (
-              <div className="text-slate-400 text-center py-8">Loading…</div>
+              <div className="space-y-3">
+                {[0, 1, 2].map((i) => (
+                  <div
+                    key={i}
+                    className="h-24 animate-pulse rounded-2xl bg-primary-800/60"
+                  />
+                ))}
+              </div>
             )}
+
             {!loading &&
-              projects.map((p) => (
-                <Card
+              projects.map((p, i) => (
+                <motion.div
                   key={p.id.toString()}
-                  className="p-4 cursor-pointer hover:border-emerald-500 transition-colors"
-                  onClick={() => router.push(`/project/${p.id}`)}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: i * 0.04 }}
                 >
-                  <div className="flex justify-between items-center gap-4">
-                    <div>
-                      <div className="font-mono text-sm text-slate-500">
-                        Project #{p.id.toString()}
+                  <Card
+                    className="cursor-pointer p-4 transition-colors hover:border-accent-500/40 md:p-5"
+                    onClick={() => router.push(`/project/${p.id}`)}
+                  >
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="font-mono text-sm text-primary-500">
+                            Project #{p.id.toString()}
+                          </span>
+                          <Badge
+                            className={
+                              p.role === "Buyer"
+                                ? "border-accent-500/30 bg-accent-500/10 text-accent-400"
+                                : "border-green-500/30 bg-green-500/10 text-green-400"
+                            }
+                          >
+                            {p.role === "Buyer" ? "买方" : "卖方"}
+                          </Badge>
+                        </div>
+                        <p className="mt-2 text-sm text-primary-300">
+                          对手方{" "}
+                          <span className="font-mono text-primary-200">
+                            {shortAddr(
+                              p.role === "Buyer" ? p.seller : p.buyer
+                            )}
+                          </span>
+                        </p>
+                        <div className="mt-3 flex flex-wrap gap-4 text-sm">
+                          <div>
+                            <span className="app-meta">总额</span>
+                            <p className="mt-0.5 font-bold text-white">
+                              {fmtUSDC(p.totalAmount)}
+                            </p>
+                          </div>
+                          <div>
+                            <span className="app-meta">已释放</span>
+                            <p className="mt-0.5 font-bold text-green-400">
+                              {fmtUSDC(p.releasedAmount)}
+                            </p>
+                          </div>
+                        </div>
                       </div>
-                      <div className="mt-1">
-                        You are: <span className="font-bold">{p.role}</span> ·
-                        Counterparty:{" "}
-                        {shortAddr(
-                          p.role === "Buyer" ? p.seller : p.buyer
-                        )}
-                      </div>
-                      <div className="text-slate-400 text-sm mt-1">
-                        Total: {fmtUSDC(p.totalAmount)} · Released:{" "}
-                        {fmtUSDC(p.releasedAmount)}
+                      <div className="flex shrink-0 items-center gap-3">
+                        <ProjectStatusBadge status={p.status} />
+                        <ArrowRight className="hidden h-4 w-4 text-primary-600 sm:block" />
                       </div>
                     </div>
-                    <ProjectStatusBadge status={p.status} />
-                  </div>
-                </Card>
+                  </Card>
+                </motion.div>
               ))}
+
             {!loading && projects.length === 0 && (
-              <div className="text-center text-slate-400 py-12">
-                No projects yet. Click &quot;+ New Project&quot; to create one.
-              </div>
+              <EmptyState
+                title="还没有项目"
+                description="创建第一个里程碑托管项目，锁定 USDC，按阶段结算。"
+                action={
+                  <Button onClick={() => router.push("/project/new")}>
+                    创建第一个项目
+                  </Button>
+                }
+              />
             )}
           </div>
         )}
-      </div>
-    </main>
+    </AppShell>
   );
 }

@@ -15,9 +15,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "B2B Stablecoin Escrow",
+  title: "MilePay — Trust less. Ship more.",
   description:
-    "Trustless milestone-based B2B payments on Avalanche. Buyer locks USDC, seller delivers, code releases funds in ~2 seconds.",
+    "面向跨境团队的里程碑 USDC 托管结算。锁定资金，按阶段交付，在 Avalanche 上快速完成结算。",
 };
 
 export default function RootLayout({
@@ -26,9 +26,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="zh-CN">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-950 text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-primary-950 text-primary-200`}
       >
         <Providers>{children}</Providers>
       </body>
