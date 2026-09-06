@@ -59,7 +59,7 @@ export default function Home() {
               产品能力
             </a>
             <a href="#why" className="transition-colors hover:text-accent-400">
-              为何 Avalanche
+              为什么需要规则
             </a>
           </div>
           <div className="flex items-center gap-3">
@@ -68,7 +68,7 @@ export default function Home() {
               href="/project/new"
               className="hidden rounded-full bg-accent-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-accent-900/40 transition-all hover:bg-accent-500 active:scale-95 sm:inline-flex"
             >
-              创建项目
+              发布项目
             </Link>
           </div>
         </div>
@@ -92,13 +92,13 @@ export default function Home() {
                 <div className="animate-shiny inline-flex items-center space-x-2 rounded-full border border-accent-500/20 bg-accent-500/10 px-3 py-1 sm:px-4 sm:py-1.5">
                   <Sparkles className="h-3 w-3 flex-shrink-0 text-accent-400 sm:h-3.5 sm:w-3.5" />
                   <span className="text-[9px] font-black uppercase tracking-[0.1em] text-accent-400 sm:text-[10px] sm:tracking-[0.15em]">
-                    Built on Avalanche
+                    A protocol for service work
                   </span>
                 </div>
                 <div className="inline-flex items-center space-x-2 rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1 sm:px-4 sm:py-1.5">
                   <ShieldCheck className="h-3 w-3 flex-shrink-0 text-green-400 sm:h-3.5 sm:w-3.5" />
                   <span className="text-[9px] font-black uppercase tracking-[0.1em] text-green-400 sm:text-[10px] sm:tracking-[0.15em]">
-                    里程碑托管
+                    项目方 × 服务方
                   </span>
                 </div>
               </div>
@@ -110,7 +110,7 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                   className="animate-title-glow animate-title-shimmer block bg-gradient-to-r from-accent-400 via-white to-amber-600 bg-clip-text text-[clamp(2.2rem,7vw+0.5rem,7rem)] font-black italic leading-[1.05] tracking-tighter text-transparent"
                 >
-                  Trust less.
+                  Post work.
                 </motion.span>
                 <motion.span
                   initial={{ opacity: 0, y: 20 }}
@@ -118,27 +118,27 @@ export default function Home() {
                   transition={{ duration: 0.8, delay: 0.4 }}
                   className="mt-1 block bg-gradient-to-b from-white to-white/70 bg-clip-text text-3xl font-black leading-[1.1] tracking-tight text-transparent drop-shadow-sm sm:text-5xl md:text-6xl lg:text-7xl"
                 >
-                  Ship more.
+                  Get paid.
                 </motion.span>
               </h1>
 
               <p className="mb-5 max-w-xl text-sm font-medium leading-relaxed text-primary-400/90 sm:mb-8 sm:text-base md:mb-10 md:text-lg lg:text-xl">
-                面向跨境团队的里程碑 USDC 托管结算。锁定资金，按阶段交付，在 Avalanche
-                上快速完成结算——无需平台抽成。
+                项目方发布需求，服务方接下项目。双方把目标、金额和截止时间写进里程碑，
+                用 USDC 在 Avalanche 上直接结算——不依赖中介替你保管资金。
               </p>
 
               <div className="mb-5 flex flex-wrap gap-3 text-[9px] font-bold uppercase tracking-[0.12em] text-primary-500 sm:mb-8 sm:gap-4 sm:text-[10px] md:mb-10 md:text-xs md:tracking-[0.2em]">
                 <div className="group flex cursor-default items-center gap-2">
                   <Globe className="h-3.5 w-3.5 text-accent-500 transition-transform group-hover:rotate-12 sm:h-4 sm:w-4" />
-                  跨境服务商
+                  发布项目
                 </div>
                 <div className="group flex cursor-default items-center gap-2">
                   <Briefcase className="h-3.5 w-3.5 text-accent-500 transition-transform group-hover:-rotate-12 sm:h-4 sm:w-4" />
-                  外包团队
+                  接受项目
                 </div>
                 <div className="group flex cursor-default items-center gap-2">
                   <Database className="h-3.5 w-3.5 text-accent-500 transition-transform group-hover:scale-110 sm:h-4 sm:w-4" />
-                  DAO 服务供应商
+                  跨境结算
                 </div>
               </div>
 
@@ -147,7 +147,7 @@ export default function Home() {
                   href="/project/new"
                   className="animate-cta-pulse animate-shiny group relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-accent-600 px-6 py-3 text-xs font-black text-white shadow-xl transition-all hover:scale-[1.05] hover:bg-accent-500 active:scale-95 sm:px-8 sm:py-4 sm:text-base md:px-10 md:py-5 md:text-lg"
                 >
-                  <span className="relative z-10">创建项目</span>
+                  <span className="relative z-10">发布项目</span>
                   <ArrowRight className="relative z-10 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-2 sm:h-5 sm:w-5" />
                   <div className="pointer-events-none absolute inset-0 rounded-full border-2 border-white/20 transition-all group-hover:scale-105 group-hover:border-white/40" />
                 </Link>
@@ -155,11 +155,11 @@ export default function Home() {
                   href="/dashboard"
                   className="rounded-full border border-white/10 px-6 py-3 text-xs font-bold uppercase tracking-widest text-primary-300 transition-colors hover:border-accent-500/40 hover:text-accent-400 sm:px-8 sm:py-4 sm:text-sm"
                 >
-                  查看项目
+                  进入平台
                 </Link>
               </div>
               <p className="mt-5 text-xs font-medium uppercase tracking-[0.18em] text-primary-600">
-                Avalanche Fuji · Mock USDC · 不涉及真实资金
+                Avalanche Fuji · Mock USDC · 当前为 Demo 网络
               </p>
             </motion.div>
 
@@ -185,28 +185,28 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <h2 className="mb-8 text-4xl font-black italic leading-[1] tracking-tight md:text-7xl md:tracking-tighter">
-                问题不是{" "}
+                服务市场的问题，不是{" "}
                 <span className="text-red-500 underline decoration-red-500/40 decoration-8 underline-offset-[12px]">
-                  怎么转账
+                  找到人
                 </span>
                 。
               </h2>
               <p className="mb-10 text-xl font-medium leading-relaxed text-primary-400 md:text-2xl">
-                而是谁先承担风险——先付款、先交付，还是把钱交给一套不透明的中介规则。
+                而是合作开始以后：谁来定义交付，谁来保管预算，谁来决定什么时候结算。
               </p>
               <div className="space-y-6 md:space-y-8">
                 {[
                   {
-                    title: "买方先付款",
-                    desc: "钱已经出去，交付质量只能靠承诺和事后追款。",
+                    title: "项目方发布",
+                    desc: "把需求、预算和截止时间拆成清晰的里程碑，先把合作规则说清楚。",
                   },
                   {
-                    title: "服务方先交付",
-                    desc: "成果已经完成，收款仍取决于对方是否愿意付钱。",
+                    title: "服务方接单",
+                    desc: "接下一个明确的项目，按阶段提交成果，不必承担全部垫资风险。",
                   },
                   {
-                    title: "平台托管",
-                    desc: "更多手续费、更慢到账，以及你无法验证的规则。",
+                    title: "合约结算",
+                    desc: "预算锁在双方可验证的合约里，完成一阶段，释放一阶段。",
                   },
                 ].map((item) => (
                   <div key={item.title} className="group flex items-start space-x-4 md:space-x-5">
@@ -244,7 +244,7 @@ export default function Home() {
                   }`}
                 >
                   <AlertTriangle className="h-5 w-5 flex-shrink-0" />
-                  盲信付款
+                  私下合作
                 </button>
                 <button
                   type="button"
@@ -256,7 +256,7 @@ export default function Home() {
                   }`}
                 >
                   <ShieldCheck className="h-5 w-5 flex-shrink-0" />
-                  规则托管
+                  MilePay 合约
                 </button>
               </div>
 
@@ -272,23 +272,23 @@ export default function Home() {
                     >
                       <div className="flex items-center gap-3 text-lg font-bold text-red-500">
                         <AlertTriangle className="h-6 w-6 animate-bounce" />{" "}
-                        信任缺口已暴露
+                        合作规则缺失
                       </div>
                       <div className="space-y-4 rounded-3xl border border-red-500/20 bg-red-500/5 p-8">
                         <div className="flex justify-between border-b border-red-500/10 pb-4">
                           <span className="font-bold uppercase tracking-widest text-primary-500">
-                            流程
+                            风险
                           </span>
-                          <span className="font-black text-red-500">无保障</span>
+                          <span className="font-black text-red-500">靠人记住</span>
                         </div>
                         <div className="space-y-3 text-base">
                           <div className="flex justify-between">
-                            <span className="text-primary-400">买方付款</span>
+                            <span className="text-primary-400">预算</span>
                             <span className="font-bold text-red-400">$5,000 已转出</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-primary-400">交付</span>
-                            <span className="font-black text-white">「再说吧」</span>
+                            <span className="text-primary-400">结算条件</span>
+                            <span className="font-black text-white">「到时再说」</span>
                           </div>
                         </div>
                       </div>
@@ -302,24 +302,24 @@ export default function Home() {
                       className="space-y-6"
                     >
                       <div className="flex items-center gap-3 text-lg font-bold text-accent-400">
-                        <CheckCircle className="h-6 w-6" /> 规则已验证
+                        <CheckCircle className="h-6 w-6" /> 规则已写入
                       </div>
                       <div className="space-y-4 rounded-3xl border border-accent-500/20 bg-accent-500/5 p-8">
                         <div className="flex justify-between border-b border-accent-500/10 pb-4">
                           <span className="font-bold uppercase tracking-widest text-primary-500">
-                            托管
+                            合作
                           </span>
-                          <span className="font-black text-accent-400">链上执行</span>
+                          <span className="font-black text-accent-400">双方可验证</span>
                         </div>
                         <div className="space-y-3 text-base">
                           <div className="flex justify-between">
-                            <span className="text-primary-400">已锁定</span>
+                            <span className="text-primary-400">预算</span>
                             <span className="truncate text-accent-200">500 USDC</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-primary-400">释放</span>
+                            <span className="text-primary-400">结算</span>
                             <span className="font-medium italic text-primary-300">
-                              买方确认后
+                              里程碑完成后
                             </span>
                           </div>
                         </div>
@@ -336,13 +336,13 @@ export default function Home() {
       <section id="comparison" className="mx-auto max-w-7xl px-4 py-20 md:px-6 md:py-32">
         <div className="mb-16 text-center md:mb-24">
           <h2 className="mb-6 text-5xl font-black uppercase italic tracking-tighter md:text-8xl">
-            不公平的{" "}
+            不一样的{" "}
             <span className="text-accent-500 drop-shadow-[0_0_20px_rgba(245,158,11,0.2)]">
-              优势
+              交易方式
             </span>
           </h2>
           <p className="text-lg font-bold uppercase tracking-[0.2em] text-primary-500 md:text-xl md:tracking-[0.3em]">
-            银行电汇 · 托管平台 · Avalanche 里程碑结算
+            私下合作 · Upwork · MilePay
           </p>
         </div>
 
@@ -356,10 +356,10 @@ export default function Home() {
                     维度
                   </th>
                   <th className="px-6 py-8 text-xs font-black uppercase tracking-widest text-primary-400 md:px-10 md:py-10 md:text-sm">
-                    银行 / 电汇
+                    私下转账
                   </th>
                   <th className="px-6 py-8 text-xs font-black uppercase tracking-widest text-red-500/80 md:px-10 md:py-10 md:text-sm">
-                    托管平台
+                    Upwork
                   </th>
                   <th className="relative px-6 py-8 text-xs font-black italic uppercase tracking-widest text-accent-400 md:px-10 md:py-10 md:text-sm">
                     MilePay
@@ -369,11 +369,11 @@ export default function Home() {
               </thead>
               <tbody className="divide-y divide-white/5 text-sm font-bold md:text-base">
                 {[
-                  { f: "结算速度", b: "3–5 天", e: "1–7 天", z: "约 2 秒" },
-                  { f: "平台费用", b: "单笔 $50–200", e: "抽成 5–20%", z: "0%（Demo）" },
-                  { f: "里程碑释放", b: "人工处理", e: "客服工单", z: "链上规则" },
-                  { f: "退出路径", b: "律师 / 诉讼", e: "不透明争议", z: "超时 / 退款 / 仲裁" },
-                  { f: "结算资产", b: "法币通道", e: "法币 / 混合", z: "Avalanche USDC" },
+                  { f: "项目发现", b: "靠人脉 / 社群", e: "搜索、画像、Proposal", z: "直接发布与接单" },
+                  { f: "合作管理", b: "聊天 + 表格", e: "平台工作台", z: "里程碑规则" },
+                  { f: "资金托管", b: "双方自行处理", e: "平台托管", z: "合约公开托管" },
+                  { f: "服务方费用", b: "协商", e: "0–15% / 合约", z: "0%（Demo）" },
+                  { f: "跨境结算", b: "银行通道", e: "平台支付", z: "Avalanche USDC" },
                 ].map((row) => (
                   <tr key={row.f} className="group transition-all hover:bg-white/[0.02]">
                     <td className="px-6 py-8 text-primary-300 transition-colors group-hover:text-white md:px-10 md:py-10">
@@ -403,7 +403,7 @@ export default function Home() {
               如何 <span className="text-accent-500">运作</span>
             </h2>
             <p className="text-xl font-bold uppercase tracking-[0.3em] text-primary-500">
-              锁定 → 交付 → 释放
+              发布 → 接单 → 结算
             </p>
           </div>
 
@@ -413,14 +413,14 @@ export default function Home() {
             {[
               {
                 icon: <FileText className="h-10 w-10 text-accent-500" />,
-                title: "1. 锁定预算",
-                desc: "买方创建里程碑、金额与截止时间，然后将 USDC 存入托管合约。",
-                tag: "createProject → deposit",
+                title: "1. 发布项目",
+                desc: "项目方写清需求、里程碑、金额与截止时间，把一个模糊需求变成可承接的项目。",
+                tag: "postProject → defineMilestones",
                 demo: (
                   <div className="space-y-4 rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-md">
                     <div className="space-y-2">
                       <label className="text-xs font-bold uppercase tracking-widest text-primary-400">
-                        服务方
+                        项目预算
                       </label>
                       <div className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 font-mono text-xs text-primary-200">
                         0xe6EE…1a72
@@ -445,20 +445,20 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="w-full cursor-default rounded-xl bg-accent-500 py-4 text-center text-sm font-black uppercase tracking-widest text-white shadow-lg shadow-accent-500/20">
-                      锁定 USDC
+                      发布项目
                     </div>
                   </div>
                 ),
               },
               {
                 icon: <Cpu className="h-10 w-10 text-primary-300" />,
-                title: "2. 提交交付",
-                desc: "服务方提交交付物链接。状态、时间戳与证据留在链上。",
-                tag: "submitDelivery",
+                title: "2. 接单交付",
+                desc: "服务方选择项目并开始工作，按约定提交每个里程碑的交付物与证据。",
+                tag: "acceptProject → submitDelivery",
                 demo: (
                   <div className="rounded-[2rem] border border-white/10 bg-primary-900/60 p-6">
                     <p className="text-xs font-black uppercase tracking-widest text-amber-400">
-                      等待确认
+                      等待项目方确认
                     </p>
                     <p className="mt-3 text-lg font-black text-white">UI 概念稿</p>
                     <p className="mt-2 break-all text-xs text-accent-300">
@@ -466,7 +466,7 @@ export default function Home() {
                     </p>
                     <div className="mt-6 flex gap-2">
                       <div className="flex-1 rounded-xl bg-emerald-600/90 py-3 text-center text-xs font-black uppercase tracking-widest text-white">
-                        确认释放
+                        确认并结算
                       </div>
                       <div className="flex-1 rounded-xl border border-red-500/40 py-3 text-center text-xs font-black uppercase tracking-widest text-red-400">
                         发起争议
@@ -477,9 +477,9 @@ export default function Home() {
               },
               {
                 icon: <ShieldCheck className="h-10 w-10 text-green-500" />,
-                title: "3. 释放款项",
-                desc: "买方确认后，USDC 约 2 秒到账。超时、退款与仲裁覆盖边缘情况。",
-                tag: "approveMilestone",
+                title: "3. 按阶段结算",
+                desc: "项目方确认成果后，USDC 约 2 秒到账。超时、退款与仲裁覆盖边缘情况。",
+                tag: "approveMilestone → release",
                 demo: (
                   <div className="space-y-4">
                     <div className="-rotate-1 rounded-[2rem] border border-green-500/20 bg-green-500/5 p-5 transition-transform hover:rotate-0">
@@ -530,11 +530,11 @@ export default function Home() {
         <div className="relative mx-auto max-w-7xl px-6">
           <div className="mb-16 text-center md:mb-24">
             <h2 className="mb-6 text-5xl font-black uppercase italic tracking-tighter md:text-8xl">
-              什么是{" "}
+              为什么是{" "}
               <span className="text-accent-500">MilePay</span>
             </h2>
             <p className="text-xl font-bold uppercase tracking-[0.3em] text-primary-500">
-              面向 B2B 合作的可编程结算
+              一个不替双方做决定的服务市场
             </p>
           </div>
 
@@ -548,17 +548,17 @@ export default function Home() {
                   <LockKeyhole className="h-8 w-8 text-accent-500" />
                 </div>
                 <h3 className="mb-4 text-3xl font-black uppercase tracking-tight text-white">
-                  代码即托管
+                  项目与结算分离
                 </h3>
                 <p className="mb-6 text-sm font-bold uppercase tracking-[0.2em] text-primary-500">
-                  核心机制
+                  平台角色
                 </p>
                 <div className="mb-8 h-px bg-gradient-to-r from-primary-800 to-transparent" />
                 <p className="text-xl font-medium leading-relaxed text-primary-300">
                   <span className="mb-2 block text-xs font-black uppercase text-accent-400">
-                    价值
+                    不是中介
                   </span>
-                  预算锁在双方都能验证的合约里——不是打进个人钱包，也不是交给黑箱平台。
+                  MilePay 让项目方和服务方直接协作；平台不替双方保管关系，合约只负责把已约定的规则公开执行。
                 </p>
               </div>
               <div className="mt-8 rounded-2xl border border-white/5 bg-primary-900/30 p-6 font-mono text-xs text-primary-500">
@@ -578,11 +578,11 @@ export default function Home() {
                 </div>
                 <div>
                   <h3 className="mb-2 text-2xl font-black uppercase tracking-tight text-white">
-                    Avalanche 最终性
+                    跨境服务结算
                   </h3>
                   <p className="text-sm font-medium leading-relaxed text-primary-400">
                     <span className="mr-2 font-black text-green-400">速度</span>
-                    买方确认后，服务方约 2 秒看到 USDC 到账，而不是等几天。
+                    服务方完成里程碑并获确认后，USDC 约 2 秒到账，不必等待跨境银行流程。
                   </p>
                 </div>
               </div>
@@ -598,11 +598,11 @@ export default function Home() {
                 </div>
                 <div>
                   <h3 className="mb-2 text-2xl font-black uppercase tracking-tight text-white">
-                    逃生舱
+                    规则出口
                   </h3>
                   <p className="text-sm font-medium leading-relaxed text-primary-400">
                     <span className="mr-2 font-black text-primary-300">安全</span>
-                    自动释放、逾期退款，以及按 bps 分配的仲裁。
+                    自动释放、逾期退款，以及按 bps 分配的仲裁，让合作不只依赖口头承诺。
                   </p>
                 </div>
               </div>
@@ -624,10 +624,10 @@ export default function Home() {
               href="/project/new"
               className="rounded-full bg-white px-12 py-6 text-2xl font-black text-accent-700 shadow-2xl transition-all hover:scale-105 active:scale-95"
             >
-              创建第一个项目
+              发布第一个项目
             </Link>
             <p className="text-sm font-bold uppercase tracking-widest text-accent-200/60">
-              Secured by Avalanche C-Chain · Fuji Demo
+              发布需求，找到服务方，按里程碑结算 · Avalanche Fuji Demo
             </p>
           </div>
         </div>

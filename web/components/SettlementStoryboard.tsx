@@ -27,28 +27,28 @@ const STEP_META: Record<
   { label: string; title: string; body: string; status: string }
 > = {
   lock: {
-    label: "锁定",
-    title: "买方锁定预算",
-    body: "500 USDC 进入托管合约，而不是打给个人钱包。",
-    status: "已托管",
+    label: "发布",
+    title: "项目方发布预算",
+    body: "500 USDC 对应清晰的里程碑，而不是一笔模糊的总价。",
+    status: "项目已发布",
   },
   deliver: {
-    label: "交付",
+    label: "接单",
     title: "服务方提交交付物",
-    body: "里程碑证据上链：figma.com/demo-phase1",
-    status: "已提交",
+    body: "接下项目后按阶段交付，证据留在合作记录里：figma.com/demo-phase1",
+    status: "交付已提交",
   },
   approve: {
     label: "确认",
-    title: "买方确认里程碑",
-    body: "规则满足，准备释放本阶段 200 USDC。",
-    status: "确认中",
+    title: "项目方确认里程碑",
+    body: "成果符合约定，准备释放本阶段 200 USDC。",
+    status: "等待确认",
   },
   release: {
-    label: "释放",
-    title: "资金即时到账",
-    body: "Avalanche 最终性约 2 秒 · Seller 余额跳动。",
-    status: "已释放",
+    label: "结算",
+    title: "服务方即时到账",
+    body: "Avalanche 最终性约 2 秒 · Seller 收到本阶段报酬。",
+    status: "已结算",
   },
 };
 
@@ -88,13 +88,13 @@ export function SettlementStoryboard() {
         <div className="flex items-start justify-between border-b border-white/5 px-5 py-4 md:px-6 md:py-5">
           <div>
             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary-500">
-              Project #1 · Demo
+              Project #1 · Open collaboration
             </p>
             <p className="mt-1 text-base font-black text-white md:text-lg">
               品牌投放 · 第一阶段
             </p>
             <p className="mt-1 font-mono text-[11px] text-primary-500">
-              Buyer ⇄ Seller
+              Project owner ⇄ Service provider
             </p>
           </div>
           <div className="flex items-center gap-2">
@@ -130,7 +130,7 @@ export function SettlementStoryboard() {
         <div className="grid grid-cols-2 gap-3 px-5 py-5 md:gap-4 md:px-6">
           <div className="rounded-2xl border border-white/5 bg-primary-950/60 p-4">
             <p className="text-[10px] font-bold uppercase tracking-widest text-primary-500">
-              合约余额
+              待结算预算
             </p>
             <motion.p
               key={`e-${bal.escrow}`}
@@ -150,7 +150,7 @@ export function SettlementStoryboard() {
             }`}
           >
             <p className="text-[10px] font-bold uppercase tracking-widest text-primary-500">
-              Seller 余额
+              服务方已到账
             </p>
             <motion.p
               key={`s-${bal.seller}`}
@@ -242,22 +242,22 @@ export function SettlementStoryboard() {
 
               {step === "approve" && (
                 <div className="animate-cta-pulse mt-4 rounded-xl bg-accent-600 py-3 text-center text-xs font-black uppercase tracking-widest text-white shadow-lg shadow-accent-900/40">
-                  Approve & Release 200 USDC
+                  Confirm & Pay 200 USDC
                 </div>
               )}
               {step === "release" && (
                 <div className="mt-4 flex items-center justify-center gap-2 rounded-xl border border-green-500/30 bg-green-500/10 py-3 text-xs font-black uppercase tracking-widest text-green-400">
-                  <Zap className="h-3.5 w-3.5" /> 已释放 · Avalanche Finality
+                  <Zap className="h-3.5 w-3.5" /> 已结算 · Avalanche Finality
                 </div>
               )}
               {step === "lock" && (
                 <div className="mt-4 rounded-xl border border-white/10 py-3 text-center text-xs font-black uppercase tracking-widest text-primary-400">
-                  Deposit 500 USDC → Escrow
+                  Fund 500 USDC → Project
                 </div>
               )}
               {step === "deliver" && (
                 <div className="mt-4 rounded-xl border border-amber-500/30 bg-amber-500/10 py-3 text-center text-xs font-black uppercase tracking-widest text-amber-300">
-                  Submit Delivery
+                  Submit Deliverable
                 </div>
               )}
             </motion.div>
@@ -265,7 +265,7 @@ export function SettlementStoryboard() {
 
           <div className="mt-4 flex items-center gap-2 text-xs text-primary-500">
             <ShieldCheck className="h-3.5 w-3.5 text-green-400" />
-            自动循环预演 · 非真实交易 · 现场 Demo 同一流程
+            自动循环预演 · 非真实交易 · 发布、接单、结算的同一流程
           </div>
         </div>
       </div>
