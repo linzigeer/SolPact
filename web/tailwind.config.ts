@@ -5,6 +5,8 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./solana/**/*.{js,ts,jsx,tsx,mdx}",
+    "./legacy/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {

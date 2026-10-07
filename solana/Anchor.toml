@@ -1,0 +1,19 @@
+[toolchain]
+anchor_version = "0.31.1"
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.localnet]
+solpact = "8yTJg2ze6mPunXu8fgX6DBVwg6kxpLixM2e9DPhcQ5bt"
+
+[programs.devnet]
+solpact = "8yTJg2ze6mPunXu8fgX6DBVwg6kxpLixM2e9DPhcQ5bt"
+
+[provider]
+cluster = "Localnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "corepack pnpm test"

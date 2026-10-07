@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { WalletButton } from "@/components/WalletButton";
+import { PROGRAM_ID, solanaExplorerAddress } from "@/solana/config";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
@@ -18,8 +19,10 @@ import {
   FileText,
   Cpu,
   Key,
+  Play,
 } from "lucide-react";
 import { SettlementStoryboard } from "@/components/SettlementStoryboard";
+import { ProjectVideo } from "@/components/ProjectVideo";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -48,7 +51,7 @@ export default function Home() {
               <LockKeyhole className="h-5 w-5 text-accent-400" />
             </div>
             <span className="bg-gradient-to-r from-white to-primary-400 bg-clip-text text-xl font-bold tracking-tight text-transparent">
-              MilePay
+              SolPact
             </span>
           </Link>
           <div className="hidden space-x-8 text-sm font-medium text-primary-400 md:flex">
@@ -61,9 +64,12 @@ export default function Home() {
             <a href="#why" className="transition-colors hover:text-accent-400">
               为什么需要规则
             </a>
+            <a href="#project-video" className="transition-colors hover:text-accent-400">
+              项目视频
+            </a>
           </div>
           <div className="flex items-center gap-3">
-            <ConnectButton />
+            <WalletButton />
             <Link
               href="/project/new"
               className="hidden rounded-full bg-accent-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-accent-900/40 transition-all hover:bg-accent-500 active:scale-95 sm:inline-flex"
@@ -124,7 +130,7 @@ export default function Home() {
 
               <p className="mb-5 max-w-xl text-sm font-medium leading-relaxed text-primary-400/90 sm:mb-8 sm:text-base md:mb-10 md:text-lg lg:text-xl">
                 项目方发布需求，服务方接下项目。双方把目标、金额和截止时间写进里程碑，
-                用 USDC 在 Avalanche 上直接结算——不依赖中介替你保管资金。
+                用 USDC 在 Solana 上按阶段结算，让交付与付款遵循双方约定。
               </p>
 
               <div className="mb-5 flex flex-wrap gap-3 text-[9px] font-bold uppercase tracking-[0.12em] text-primary-500 sm:mb-8 sm:gap-4 sm:text-[10px] md:mb-10 md:text-xs md:tracking-[0.2em]">
@@ -157,9 +163,16 @@ export default function Home() {
                 >
                   进入平台
                 </Link>
+                <a
+                  href="#project-video"
+                  className="inline-flex items-center gap-2 whitespace-nowrap py-3 text-xs font-bold text-accent-400 transition-colors hover:text-accent-300 sm:text-sm"
+                >
+                  <Play className="h-4 w-4" aria-hidden="true" />
+                  观看项目视频
+                </a>
               </div>
               <p className="mt-5 text-xs font-medium uppercase tracking-[0.18em] text-primary-600">
-                Avalanche Fuji · Mock USDC · 当前为 Demo 网络
+                Solana Devnet · 合约已部署 · USDC 里程碑托管
               </p>
             </motion.div>
 
@@ -174,6 +187,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <ProjectVideo />
 
       <section id="why" className="relative bg-primary-950 py-16 md:py-32">
         <div className="absolute left-0 top-1/2 h-px w-full bg-gradient-to-r from-transparent via-primary-800 to-transparent" />
@@ -256,7 +271,7 @@ export default function Home() {
                   }`}
                 >
                   <ShieldCheck className="h-5 w-5 flex-shrink-0" />
-                  MilePay 合约
+                  SolPact 合约
                 </button>
               </div>
 
@@ -342,7 +357,7 @@ export default function Home() {
             </span>
           </h2>
           <p className="text-lg font-bold uppercase tracking-[0.2em] text-primary-500 md:text-xl md:tracking-[0.3em]">
-            私下合作 · Upwork · MilePay
+            私下合作 · Upwork · SolPact
           </p>
         </div>
 
@@ -362,7 +377,7 @@ export default function Home() {
                     Upwork
                   </th>
                   <th className="relative px-6 py-8 text-xs font-black italic uppercase tracking-widest text-accent-400 md:px-10 md:py-10 md:text-sm">
-                    MilePay
+                    SolPact
                     <div className="absolute inset-0 -z-10 border-x border-accent-500/20 bg-accent-500/5" />
                   </th>
                 </tr>
@@ -373,7 +388,7 @@ export default function Home() {
                   { f: "合作管理", b: "聊天 + 表格", e: "平台工作台", z: "里程碑规则" },
                   { f: "资金托管", b: "双方自行处理", e: "平台托管", z: "合约公开托管" },
                   { f: "服务方费用", b: "协商", e: "0–15% / 合约", z: "0%（Demo）" },
-                  { f: "跨境结算", b: "银行通道", e: "平台支付", z: "Avalanche USDC" },
+                  { f: "跨境结算", b: "银行通道", e: "平台支付", z: "Solana USDC 托管" },
                 ].map((row) => (
                   <tr key={row.f} className="group transition-all hover:bg-white/[0.02]">
                     <td className="px-6 py-8 text-primary-300 transition-colors group-hover:text-white md:px-10 md:py-10">
@@ -423,7 +438,7 @@ export default function Home() {
                         项目预算
                       </label>
                       <div className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 font-mono text-xs text-primary-200">
-                        0xe6EE…1a72
+                        服务方 Solana 钱包地址
                       </div>
                     </div>
                     <div className="grid grid-cols-2 gap-3">
@@ -478,7 +493,7 @@ export default function Home() {
               {
                 icon: <ShieldCheck className="h-10 w-10 text-green-500" />,
                 title: "3. 按阶段结算",
-                desc: "项目方确认成果后，USDC 约 2 秒到账。超时、退款与仲裁覆盖边缘情况。",
+                desc: "项目方确认成果后，按约定释放本阶段 USDC。Solana 合约支持超时领取、退款与仲裁规则。",
                 tag: "approveMilestone → release",
                 demo: (
                   <div className="space-y-4">
@@ -487,13 +502,13 @@ export default function Home() {
                         已释放
                       </p>
                       <p className="mt-2 text-2xl font-black text-white">+200 USDC</p>
-                      <p className="mt-1 text-xs text-primary-400">服务方钱包 · Avalanche Fuji</p>
+                      <p className="mt-1 text-xs text-primary-400">服务方钱包 · Solana 结算预演</p>
                     </div>
                     <div className="rotate-1 rounded-[2rem] border border-white/10 bg-white/5 p-5 transition-transform hover:rotate-0">
                       <p className="text-xs font-black uppercase tracking-widest text-primary-500">
-                        最终性
+                        结算网络
                       </p>
-                      <p className="mt-2 font-mono text-sm text-accent-300">约 2 秒</p>
+                      <p className="mt-2 font-mono text-sm text-accent-300">Solana</p>
                     </div>
                   </div>
                 ),
@@ -531,7 +546,7 @@ export default function Home() {
           <div className="mb-16 text-center md:mb-24">
             <h2 className="mb-6 text-5xl font-black uppercase italic tracking-tighter md:text-8xl">
               为什么是{" "}
-              <span className="text-accent-500">MilePay</span>
+              <span className="text-accent-500">SolPact</span>
             </h2>
             <p className="text-xl font-bold uppercase tracking-[0.3em] text-primary-500">
               一个不替双方做决定的服务市场
@@ -558,13 +573,13 @@ export default function Home() {
                   <span className="mb-2 block text-xs font-black uppercase text-accent-400">
                     不是中介
                   </span>
-                  MilePay 让项目方和服务方直接协作；平台不替双方保管关系，合约只负责把已约定的规则公开执行。
+                  SolPact 让项目方和服务方直接协作；平台不替双方保管关系，合约只负责把已约定的规则公开执行。
                 </p>
               </div>
               <div className="mt-8 rounded-2xl border border-white/5 bg-primary-900/30 p-6 font-mono text-xs text-primary-500">
-                Escrow.sol · Fuji
+                SolPact Solana Program
                 <br />
-                {`0x6df99e9f713aB9ECb57fa4842660CBdE0c000Eeb`}
+                <a href={solanaExplorerAddress(PROGRAM_ID.toBase58())} target="_blank" rel="noreferrer" className="break-all text-accent-400 underline">{PROGRAM_ID.toBase58()}</a>
               </div>
             </motion.div>
 
@@ -582,7 +597,7 @@ export default function Home() {
                   </h3>
                   <p className="text-sm font-medium leading-relaxed text-primary-400">
                     <span className="mr-2 font-black text-green-400">速度</span>
-                    服务方完成里程碑并获确认后，USDC 约 2 秒到账，不必等待跨境银行流程。
+                    服务方完成里程碑并获确认后，通过 Solana 结算 USDC，按阶段获得报酬。
                   </p>
                 </div>
               </div>
@@ -615,9 +630,9 @@ export default function Home() {
         <div className="relative overflow-hidden rounded-[4rem] bg-gradient-to-br from-accent-700 to-primary-900 p-12 shadow-2xl md:p-24">
           <div className="absolute inset-0 bg-primary-950/20" />
           <h2 className="relative z-10 mb-8 text-5xl font-black italic leading-none tracking-tighter text-white md:text-8xl">
-            Trust less.
+            Agree. Deliver.
             <br />
-            Ship more.
+            Get paid.
           </h2>
           <div className="relative z-10 flex flex-col items-center gap-6">
             <Link
@@ -627,7 +642,7 @@ export default function Home() {
               发布第一个项目
             </Link>
             <p className="text-sm font-bold uppercase tracking-widest text-accent-200/60">
-              发布需求，找到服务方，按里程碑结算 · Avalanche Fuji Demo
+              发布需求，找到服务方，按里程碑结算 · Solana Devnet 已部署
             </p>
           </div>
         </div>
@@ -639,10 +654,10 @@ export default function Home() {
             <LockKeyhole className="h-5 w-5 text-accent-400 opacity-80" />
           </div>
           <span className="text-2xl font-black tracking-tighter text-primary-400">
-            MilePay
+            SolPact
           </span>
         </div>
-        <p>MilePay · Avalanche Builder Day 成都 · 2026</p>
+        <p>SolPact · Built for Solana · 2026</p>
       </footer>
     </div>
   );

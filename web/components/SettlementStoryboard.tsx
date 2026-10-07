@@ -46,8 +46,8 @@ const STEP_META: Record<
   },
   release: {
     label: "结算",
-    title: "服务方即时到账",
-    body: "Avalanche 最终性约 2 秒 · Seller 收到本阶段报酬。",
+    title: "服务方收到结算",
+    body: "Solana USDC 结算预演 · Seller 收到本阶段报酬。",
     status: "已结算",
   },
 };
@@ -170,7 +170,7 @@ export function SettlementStoryboard() {
                 animate={{ opacity: 1, y: 0 }}
                 className="mt-1 text-xs font-black text-green-400"
               >
-                +200 USDC · ~2s
+                +200 USDC · 结算预演
               </motion.p>
             )}
           </div>
@@ -247,7 +247,7 @@ export function SettlementStoryboard() {
               )}
               {step === "release" && (
                 <div className="mt-4 flex items-center justify-center gap-2 rounded-xl border border-green-500/30 bg-green-500/10 py-3 text-xs font-black uppercase tracking-widest text-green-400">
-                  <Zap className="h-3.5 w-3.5" /> 已结算 · Avalanche Finality
+                  <Zap className="h-3.5 w-3.5" /> 已结算 · Solana 预演
                 </div>
               )}
               {step === "lock" && (

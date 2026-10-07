@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, type ReactNode } from "react";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { WalletButton } from "@/components/WalletButton";
 import { LockKeyhole } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -46,7 +46,7 @@ export function AppShell({
               <LockKeyhole className="h-4 w-4 text-accent-400" />
             </div>
             <span className="bg-gradient-to-r from-white to-primary-400 bg-clip-text text-lg font-bold tracking-tight text-transparent">
-              MilePay
+              SolPact
             </span>
           </Link>
 
@@ -55,7 +55,7 @@ export function AppShell({
               const active =
                 pathname === item.href ||
                 (item.href === "/dashboard" &&
-                  /^\/project\/\d+/.test(pathname));
+                  (pathname.startsWith("/project/") && pathname !== "/project/new"));
               return (
                 <Link
                   key={item.href}
@@ -72,7 +72,7 @@ export function AppShell({
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3">
-            <ConnectButton chainStatus="icon" showBalance={false} />
+            <WalletButton />
             {pathname === "/dashboard" && (
               <Link
                 href="/project/new"

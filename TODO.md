@@ -1,4 +1,22 @@
-# TODO — MilePay
+# TODO — SolPact
+
+## Solana migration
+
+- [x] Unify SolPact branding and visible network copy around Solana.
+- [x] Isolate the original EVM frontend behind an explicit legacy-demo flag.
+- [x] Provide labeled sample project pages and an editable form during migration.
+- [x] Rewrite and deploy the Solana escrow program to Devnet.
+- [x] Complete real Devnet protocol tests, including the one-hour automatic release window (175 transactions, 83 assertions).
+- [x] Remove the old Avalanche contract workspace; preserve source history and record the unclaimed Fuji test balances.
+- [x] Integrate Phantom-first wallet connection, Solflare support, account events, and Devnet balance queries.
+- [x] Validate counterparty public keys against the deployed program’s rules.
+- [x] Implement SPL USDC deposits, releases, refunds, and disputes in the program.
+- [x] Read real program accounts and confirm submitted transactions.
+- [ ] Validate the full buyer/seller wallet workflow on Devnet.
+
+## Historical prototype checklist
+
+The checklist below records the original implementation. Its `contracts/` paths refer to the archived workspace in Git history, not the current checkout. The `docs/` reference files are maintained locally and are not versioned.
 
 > ⏰ Coding 时间窗口：13:00–17:30（4.5h）
 > 📌 规则：P0 = 不做就不能 Demo，P1 = 加分项，P2 = Roadmap 话术

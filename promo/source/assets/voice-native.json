@@ -1,0 +1,162 @@
+[
+  {
+    "text": "We",
+    "start": 0.096291,
+    "duration": 0.150458
+  },
+  {
+    "text": "started",
+    "start": 0.269916,
+    "duration": 0.370375
+  },
+  {
+    "text": "with",
+    "start": 0.663416,
+    "duration": 0.138875
+  },
+  {
+    "text": "an",
+    "start": 0.825458,
+    "duration": 0.127333
+  },
+  {
+    "text": "Avalanche",
+    "start": 0.964333,
+    "duration": 0.439833
+  },
+  {
+    "text": "prototype",
+    "start": 1.41575,
+    "duration": 0.636583
+  },
+  {
+    "text": "Now",
+    "start": 2.847208,
+    "duration": 0.254625
+  },
+  {
+    "text": "we're",
+    "start": 3.113416,
+    "duration": 0.162041
+  },
+  {
+    "text": "rebuilding",
+    "start": 3.298625,
+    "duration": 0.497666
+  },
+  {
+    "text": "natively",
+    "start": 3.819458,
+    "duration": 0.416666
+  },
+  {
+    "text": "with",
+    "start": 4.25925,
+    "duration": 0.173625
+  },
+  {
+    "text": "Rust",
+    "start": 4.456,
+    "duration": 0.254625
+  },
+  {
+    "text": "and",
+    "start": 4.733791,
+    "duration": 0.092583
+  },
+  {
+    "text": "Anchor",
+    "start": 4.849541,
+    "duration": 0.416666
+  },
+  {
+    "text": "Separate",
+    "start": 6.076375,
+    "duration": 0.451375
+  },
+  {
+    "text": "project",
+    "start": 6.539333,
+    "duration": 0.381958
+  },
+  {
+    "text": "accounts",
+    "start": 6.944458,
+    "duration": 0.370375
+  },
+  {
+    "text": "milestone",
+    "start": 7.419,
+    "duration": 0.462958
+  },
+  {
+    "text": "accounts",
+    "start": 7.8935,
+    "duration": 0.381958
+  },
+  {
+    "text": "and",
+    "start": 8.425916,
+    "duration": 0.150458
+  },
+  {
+    "text": "independent",
+    "start": 8.599541,
+    "duration": 0.486125
+  },
+  {
+    "text": "SPL-token",
+    "start": 9.097208,
+    "duration": 0.706
+  },
+  {
+    "text": "vaults",
+    "start": 9.826375,
+    "duration": 0.289333
+  },
+  {
+    "text": "make",
+    "start": 10.127333,
+    "duration": 0.19675
+  },
+  {
+    "text": "each",
+    "start": 10.347208,
+    "duration": 0.150458
+  },
+  {
+    "text": "project's",
+    "start": 10.520833,
+    "duration": 0.439833
+  },
+  {
+    "text": "funds",
+    "start": 10.983791,
+    "duration": 0.254625
+  },
+  {
+    "text": "easier",
+    "start": 11.261583,
+    "duration": 0.347208
+  },
+  {
+    "text": "to",
+    "start": 11.631958,
+    "duration": 0.11575
+  },
+  {
+    "text": "isolate",
+    "start": 11.770833,
+    "duration": 0.462958
+  },
+  {
+    "text": "and",
+    "start": 12.256958,
+    "duration": 0.081
+  },
+  {
+    "text": "verify",
+    "start": 12.361125,
+    "duration": 0.555541
+  }
+]

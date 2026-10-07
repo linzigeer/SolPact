@@ -1,110 +1,78 @@
-# MilePay
+# SolPact
 
-> Trustless milestone-based B2B payments on Avalanche. Buyer locks USDC, seller delivers, code releases funds in ~2 seconds. 0% platform fee, <$0.01 gas.
+> Agree. Deliver. Get paid. Milestone-based USDC escrow and settlement for service work on Solana.
 
-Formerly *B2B Stablecoin Escrow* — Avalanche Builder Day @ Chengdu · 2026-09-06
+SolPact's escrow program is deployed and tested on Solana Devnet. The frontend provides Phantom-first wallet connection and migration previews while settlement transactions are being integrated.
 
----
-
-## Status
+## Current status
 
 | Layer | Status |
 |-------|--------|
-| Smart contracts (`contracts/`) | ✅ Escrow + MockUSDC, **6/6 forge tests passing** |
-| Frontend (`web/`) | ✅ 4 pages, `pnpm build` green |
-| Fuji deploy | ✅ Escrow [`0x6df9…0Eeb`](https://testnet.snowtrace.io/address/0x6df99e9f713aB9ECb57fa4842660CBdE0c000Eeb) · USDC [`0x0bA3…8ff1`](https://testnet.snowtrace.io/address/0x0bA33E7Ac0c997fF627a8AE1FF86f1ca01618ff1) |
-| Happy Path | ✅ Project `#0` Completed（Seller +200 USDC） |
-| Local dApp | ✅ http://localhost:3000 · slides: `/demo-slides.html` |
-| Vercel | ✅ https://milepay-onecheeses-projects.vercel.app |
+| Frontend (`web/`) | Live wallet-role project queries, resumable creation, funding, delivery, payments, refunds and arbitration |
+| Solana wallets | Phantom preferred, Solflare supported; connect/disconnect, account switching, public keys, and Devnet balance reads |
+| Solana program (`solana/`) | Deployed and tested on Devnet: 175 real test transactions, 83 assertions, including the one-hour automatic release |
+| Chain transactions | Simulation, wallet signing, broadcast and confirmed-state updates enabled |
+| Original EVM implementation | Contract workspace removed; Git history, historical ABI and opt-in legacy frontend retained |
 
----
+The dashboard and project pages use real program accounts. Only the homepage animation and `/project/demo` are illustrative samples. Wallet-authorized writes target Solana Devnet.
 
-## Quick start
-
-### 1. Contracts
-
-```bash
-export PATH="$HOME/.foundry/bin:$PATH"
-cd contracts
-forge test -vv
-
-# Deploy to Fuji
-cp .env.example .env   # fill DEPLOYER_PRIVATE_KEY, DEMO_BUYER, DEMO_SELLER
-source .env
-forge script script/Deploy.s.sol --rpc-url fuji --broadcast -vvvv
-```
-
-Copy printed `USDC` / `Escrow` addresses into `web/.env.local`.
-
-Export ABIs (already done once; re-run after contract changes):
-
-```bash
-mkdir -p ../web/lib/abi
-python3 -c 'import json; d=json.load(open("out/Escrow.sol/Escrow.json")); json.dump({"abi":d["abi"]}, open("../web/lib/abi/Escrow.json","w"), indent=2)'
-python3 -c 'import json; d=json.load(open("out/MockUSDC.sol/MockUSDC.json")); json.dump({"abi":d["abi"]}, open("../web/lib/abi/MockUSDC.json","w"), indent=2)'
-```
-
-### 2. Frontend
+## Run the frontend
 
 ```bash
 cd web
-cp .env.local.example .env.local
-# Fill:
-# NEXT_PUBLIC_WC_PROJECT_ID=...   (https://cloud.reown.com)
-# NEXT_PUBLIC_ESCROW_ADDRESS=0x...
-# NEXT_PUBLIC_USDC_ADDRESS=0x...
-
-pnpm install
-pnpm dev
+cp .env.local.example .env.local  # first-time setup
+corepack pnpm install --frozen-lockfile
+corepack pnpm dev --hostname 0.0.0.0
 ```
 
-Open http://localhost:3000
+Open [http://localhost:3000](http://localhost:3000). Install [Phantom](https://phantom.com/download) or use Solflare. Reads use Devnet RPC; each write requires wallet transaction approval. See [the frontend guide](web/README.md) for private RPC setup, test tokens, account rules and recovery.
 
-**Wallet: Avalanche Core**（默认）。Install [Core](https://core.app/), import Buyer / Seller private keys from `contracts/.env`, switch to **Avalanche Fuji C-Chain**. Connect via RainbowKit → Core. Deployer never needs a browser wallet (`forge script` uses the key in `.env`).
+| Page | Purpose |
+|------|---------|
+| `/` | SolPact landing page and animated Solana settlement preview |
+| `/dashboard` | Live projects for the wallet’s buyer/seller/arbitrator roles |
+| `/project/new` | Live phased creation with interruption recovery |
+| `/project/<PDA>` | Funding, delivery, settlement, refunds and arbitration |
+| `/project/demo` | Explicitly labeled sample detail |
+| `/demo-slides.html` | Solana migration presentation |
 
-### 3. Demo flow
+## Verify
 
-1. Connect **Buyer** (Core) → Create Project (paste Seller address + milestones)
-2. Buyer → Deposit USDC (approve + deposit)
-3. Switch to **Seller** (Core in a second browser profile) → Submit deliverable URI
-4. Switch to **Buyer** → Approve → Seller balance updates in ~2s
-
----
-
-## Docs
-
-| # | Doc |
-|---|-----|
-| TODO | [TODO.md](./TODO.md) |
-| 01 | [Smart Contract](./docs/01-smart-contract.md) |
-| 02 | [Frontend](./docs/02-frontend.md) |
-| 03 | [Deployment](./docs/03-deployment.md) |
-| 04 | [Execution plan](./docs/04-execution-plan.md) |
-| 05 | [Demo Day](./docs/05-demo-day.md) |
-| Slides | [docs/demo-slides.html](./docs/demo-slides.html)（方向键翻页） |
-
----
-
-## Architecture
-
-```
-Buyer / Seller / Arbitrator
-        │
-        ▼
-Next.js dApp (wagmi + RainbowKit)
-        │
-        ▼
-Avalanche Fuji
-├── Escrow.sol
-└── MockUSDC.sol
+```bash
+cd web
+corepack pnpm build
+corepack pnpm test:protocol
 ```
 
-## Stack
+The production build includes lint and TypeScript checks. Browser checks should cover wallet detection, authorization/rejection, account changes, disconnect, trusted-session restoration, balance reads/errors, and the absence of transaction signing and legacy-chain requests.
 
-- **Contracts**: Solidity 0.8.20 · Foundry · OpenZeppelin v5
-- **Web**: Next.js 14 · wagmi 2 · viem · RainbowKit · Tailwind
-- **Wallet**: Avalanche Core（默认）· RainbowKit / WalletConnect
-- **Chain**: Avalanche Fuji C-Chain (43113)
+## Wallet configuration
+
+The app queries **Devnet**, independently of the balance currently displayed inside the wallet extension. Enable Phantom’s testnet mode and select Devnet there to compare balances. On mobile, open the app in the wallet’s built-in browser.
+
+- `NEXT_PUBLIC_SOLANA_RPC_URL` — optional custom **Devnet** RPC; defaults to `https://api.devnet.solana.com`.
+- `NEXT_PUBLIC_SOLANA_USDC_MINT` — defaults to Circle Devnet USDC `4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU`; it must match the deployed program. Mainnet addresses must not be used on Devnet.
+- `SOLANA_RPC_URL` — private server-side RPC. Browser queries and broadcasts use the app RPC gateway without exposing API keys.
+
+The connection flow only requests public-key access. Previously authorized sessions restore silently: `onlyIfTrusted` for traditional Phantom injection, or Wallet Standard’s silent connection. Rejected connections leave the app disconnected. Copying addresses, viewing them on Solana Explorer, and refreshing balances are available after connection.
+
+## Solana integration next steps
+
+See the [Solana program guide](solana/README.md) for the account model, instructions, build configuration, and test commands.
+
+- Run the [Solana program build and tests](solana/README.md).
+- Frontend program instruction and role validation are integrated.
+- Frontend SPL USDC deposits and settlements are integrated.
+- Project data now comes from program accounts; transactions wait for confirmation.
+- Review the [Devnet deployment and protocol test report](solana/deployments/devnet-test-report.md), then integrate the browser buyer/seller workflow.
+
+## Historical prototype
+
+The original prototype was built on Avalanche Fuji. The old `contracts/` Foundry workspace has been removed after the Solana migration; its source remains in Git history.
+
+Historical ABIs and `web/legacy/evm/` remain available for inspecting the old deployment through the explicit `NEXT_PUBLIC_ENABLE_LEGACY_DEMO=true` flag. They are not part of the active Solana contract workspace. The two remaining Fuji MockUSDC test balances were left on the old chain; they do not affect Solana.
+
+The `docs/` directory is kept locally for reference and is excluded from version control.
 
 ## License
 

@@ -8,12 +8,6 @@ web/out/
 .env
 .env.local
 web/.env.local
-contracts/.env
-
-# Foundry
-contracts/cache/
-contracts/out/
-contracts/broadcast/
 
 # OS / IDE
 .DS_Store
@@ -23,3 +17,6 @@ contracts/broadcast/
 
 # Demo
 demo-backup.mp4
+
+# Local reference documents
+/docs/

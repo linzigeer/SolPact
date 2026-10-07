@@ -1,0 +1,10 @@
+import { copyFileSync, mkdirSync, readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import { resolve, dirname } from "node:path";
+const project = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
+const idl = JSON.parse(readFileSync(resolve(project, "solana/target/idl/solpact.json"), "utf8"));
+if (idl.address !== "8yTJg2ze6mPunXu8fgX6DBVwg6kxpLixM2e9DPhcQ5bt") throw new Error("IDL Program ID does not match the configured deployment; update both deliberately.");
+mkdirSync(resolve(project, "web/solana/idl"), { recursive: true });
+copyFileSync(resolve(project, "solana/target/idl/solpact.json"), resolve(project, "web/solana/idl/solpact.json"));
+copyFileSync(resolve(project, "solana/target/types/solpact.ts"), resolve(project, "web/solana/idl/solpact.ts"));
+console.log("SolPact IDL and TypeScript types synchronized.");

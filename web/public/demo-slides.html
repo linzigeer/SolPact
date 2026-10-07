@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MilePay — Demo Slides</title>
+  <title>SolPact — Demo Slides</title>
   <style>
     :root { color-scheme: dark; }
     * { box-sizing: border-box; }
@@ -25,29 +25,29 @@
 <body>
   <div class="deck">
     <section class="slide active">
-      <div class="kicker">Avalanche Builder Day · Chengdu</div>
-      <h1>MilePay</h1>
-      <p>跨境企业外包：先付款还是先交付？<br/>买方锁 USDC，按里程碑交付，代码 2 秒释放。0% 抽成。</p>
+      <div class="kicker">Solana · Milestone escrow & settlement</div>
+      <h1>SolPact</h1>
+      <p>跨境企业外包：先付款还是先交付？<br/>双方约定里程碑，按阶段交付与结算。Solana Devnet 合约已部署。</p>
       <div class="row">
         <div class="card"><b>Upwork / Escrow.com</b>抽 5–20%，到账 3–7 天</div>
         <div class="card"><b>银行电汇 / L/C</b>$50–200 手续费，中小企业用不起</div>
-        <div class="card"><b>我们</b>Avalanche 最终性 ~2s，Gas &lt;$0.01</div>
+        <div class="card"><b>我们</b>Solana USDC 里程碑托管与结算</div>
       </div>
     </section>
     <section class="slide">
       <h2>架构</h2>
-      <p>Buyer / Seller / Arbitrator → Next.js + RainbowKit + Core → Fuji C-Chain</p>
+      <p>目标架构：Buyer / Seller / Arbitrator → Next.js + Solana 钱包 → Solana Program</p>
       <div class="row">
-        <div class="card"><b>Escrow.sol</b>里程碑状态机 + 三个逃生舱</div>
-        <div class="card"><b>MockUSDC</b>Fuji 演示；主网换 Circle 原生 USDC</div>
+        <div class="card"><b>Solana Program</b>里程碑托管、退款与仲裁已接入</div>
+        <div class="card"><b>USDC</b>计划使用 Solana SPL Token 托管与结算</div>
         <div class="card"><b>逃生舱</b>超时自取 / 逾期退款 / 仲裁按 bps 分</div>
       </div>
-      <p style="margin-top:32px">Escrow <code>0x6df99e9f713aB9ECb57fa4842660CBdE0c000Eeb</code><br/>USDC <code>0x0bA33E7Ac0c997fF627a8AE1FF86f1ca01618ff1</code></p>
+      <p style="margin-top:32px">Program <code>8yTJg2ze6mPunXu8fgX6DBVwg6kxpLixM2e9DPhcQ5bt</code><br/>Devnet 项目创建、入金与结算通过钱包签名执行</p>
     </section>
     <section class="slide">
       <h2>Roadmap</h2>
-      <p>短期：Chainlink Automation 无人值守释放<br/>中期：Circle CCTP 跨链 USDC<br/>长期：Kleros / 合规 Subnet 企业 SaaS，托管费 0.3%</p>
-      <p style="margin-top:40px;color:#34d399">谢谢。打开 localhost:3000，Buyer 点 Approve，看 2 秒到账。</p>
+      <p>已完成：Solana 程序部署、钱包、真实项目与 USDC 结算接入<br/>验证：本地 SBF 全流程、Devnet 状态与账户读取<br/>下一步：真实钱包演示、通知与企业合作管理</p>
+      <p style="margin-top:40px;color:#34d399">打开 localhost:3000，预览项目创建、交付与结算界面。</p>
     </section>
   </div>
   <div class="hint">← → 或空格翻页</div>

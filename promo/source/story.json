@@ -1,0 +1,97 @@
+{
+  "title": "SolPact — Agree. Deliver. Get paid.",
+  "format": { "width": 1920, "height": 1080, "fps": 30 },
+  "voice": "en-US-GuyNeural",
+  "voice_rate": "+8%",
+  "audio_playback_rate": 1.2,
+  "team": [
+    { "name": "Oscar", "role": "Product & System Architecture", "zh": "产品与系统架构" },
+    { "name": "zhaoyan", "role": "Smart Contracts", "zh": "智能合约" }
+  ],
+  "scenes": [
+    { "id": "hook", "chapter": "THE TRUST GAP", "minimum_seconds": 9,
+      "captions": [
+        { "en": "You can work with anyone, anywhere.", "zh": "你可以与世界任何地方的人合作。" },
+        { "en": "Until one question stops everything.", "zh": "直到一个问题，让合作停了下来。" },
+        { "en": "Who goes first: the money, or the work?", "zh": "谁先行动：先付款，还是先交付？" }
+      ]
+    },
+    { "id": "problem", "chapter": "WHY WE BUILD", "minimum_seconds": 10,
+      "captions": [
+        { "en": "For freelancers, studios, and small teams, finding talent is only the beginning.", "zh": "对自由职业者、工作室和小团队来说，找到人才只是开始。" },
+        { "en": "Unclear deliverables, delayed payments, and upfront risk can turn a good collaboration into a bad deal.", "zh": "交付不清、回款拖延、垫资风险，都可能毁掉一次好合作。" }
+      ]
+    },
+    { "id": "brand", "chapter": "INTRODUCING SOLPACT", "minimum_seconds": 7,
+      "captions": [
+        { "en": "Meet SolPact.", "voice": "Meet Sol Pact.", "zh": "这就是 SolPact。" },
+        { "en": "Milestone-based USDC escrow for service work on Solana.", "zh": "基于 Solana 的服务合作里程碑 USDC 托管协议。" },
+        { "en": "Agree. Deliver. Get paid.", "zh": "约定清楚。按期交付。获得报酬。" }
+      ]
+    },
+    { "id": "team", "chapter": "TWO BUILDERS. ONE MISSION.", "minimum_seconds": 10,
+      "captions": [
+        { "en": "We're Oscar and zhaoyan.", "voice": "We're Oscar and Zhao Yan.", "zh": "我们是 Oscar 和 zhaoyan。" },
+        { "en": "Oscar leads product and system architecture.", "zh": "Oscar 负责产品与整体系统架构。" },
+        { "en": "zhaoyan builds the smart contracts.", "voice": "Zhao Yan builds the smart contracts.", "zh": "zhaoyan 负责智能合约。" },
+        { "en": "A two-person team, building clearer rules for collaboration.", "zh": "两个人，让合作拥有更清晰的规则。" }
+      ]
+    },
+    { "id": "fund", "chapter": "01 / AGREE & FUND", "minimum_seconds": 10,
+      "captions": [
+        { "en": "Here's a five-hundred-USDC project.", "voice": "Here's a five hundred U S D C project.", "zh": "以一个 500 USDC 的项目为例。" },
+        { "en": "Two milestones: two hundred for design, three hundred for development.", "zh": "两个里程碑：设计 200，开发 300。" },
+        { "en": "The client locks the full budget in the project's own escrow vault.", "zh": "项目方把全额预算存入该项目独立的托管金库。" }
+      ]
+    },
+    { "id": "pay", "chapter": "02 / DELIVER & GET PAID", "minimum_seconds": 11,
+      "captions": [
+        { "en": "The builder submits a deliverable link.", "zh": "服务方提交交付物链接。" },
+        { "en": "The client approves the milestone, and two hundred USDC moves to the builder.", "zh": "项目方确认里程碑，200 USDC 支付给服务方。" },
+        { "en": "The remaining three hundred stays reserved for the next stage.", "zh": "剩余 300 USDC 留在金库，保障下一阶段。" }
+      ]
+    },
+    { "id": "protect", "chapter": "RULES FOR THE HARD PARTS", "minimum_seconds": 14,
+      "captions": [
+        { "en": "And when things go wrong?", "zh": "如果合作出现问题呢？" },
+        { "en": "After the agreed response window, an undisputed delivery can be claimed by the builder.", "zh": "约定响应期结束后，服务方可主动领取无争议交付的款项。" },
+        { "en": "Missed delivery deadlines allow refunds.", "zh": "逾期未交付，项目方可以申请退款。" },
+        { "en": "Disputes go to the designated arbitrator, who can split the milestone payment.", "zh": "发生争议，由指定仲裁人裁定该阶段资金的分配。" }
+      ]
+    },
+    { "id": "solana", "chapter": "WHY SOLANA / EVERY MILESTONE", "minimum_seconds": 9,
+      "captions": [
+        { "en": "Why Solana?", "zh": "为什么选择 Solana？" },
+        { "en": "Every milestone means another on-chain action.", "zh": "每一个里程碑，都需要链上操作。" },
+        { "en": "Low transaction costs and fast confirmations make frequent, smaller settlements practical.", "zh": "低交易成本与快速确认，让高频、小额的分阶段结算更实用。" }
+      ]
+    },
+    { "id": "usdc", "chapter": "WHY SOLANA / PAYMENT ECOSYSTEM", "minimum_seconds": 10,
+      "captions": [
+        { "en": "USDC gives both sides a consistent unit for pricing and payment.", "zh": "USDC 让双方用统一的单位报价与支付。" },
+        { "en": "Native USDC and familiar wallets, including Phantom and Solflare, fit the way people already use Solana.", "zh": "原生 USDC，加上 Phantom、Solflare 等熟悉的钱包，更贴近用户习惯。" }
+      ]
+    },
+    { "id": "native", "chapter": "BUILT NATIVELY FOR SOLANA", "minimum_seconds": 12,
+      "captions": [
+        { "en": "We started with an Avalanche prototype.", "zh": "我们从 Avalanche 上的原型出发。" },
+        { "en": "Now we're rebuilding natively with Rust and Anchor.", "zh": "现在使用 Rust 与 Anchor，重构为 Solana 原生程序。" },
+        { "en": "Separate project accounts, milestone accounts, and independent SPL-token vaults make each project's funds easier to isolate and verify.", "zh": "项目账户、里程碑账户和独立 SPL 代币金库，让项目资金隔离且可验证。" }
+      ]
+    },
+    { "id": "progress", "chapter": "FROM PROTOTYPE TO DEVNET", "minimum_seconds": 11,
+      "captions": [
+        { "en": "Our program is deployed on Solana Devnet.", "zh": "程序已经部署到 Solana Devnet。" },
+        { "en": "Recorded tests cover approvals, refunds, arbitration, and account permissions.", "zh": "已记录的测试覆盖确认付款、退款、仲裁与账户权限。" },
+        { "en": "The browser interface is still being connected to the program.", "zh": "浏览器界面与链上程序的接入仍在进行中。" }
+      ]
+    },
+    { "id": "close", "chapter": "LET'S BUILD BETTER COLLABORATION", "minimum_seconds": 11,
+      "captions": [
+        { "en": "Next: complete the wallet-to-contract experience and test with real service teams.", "zh": "下一步：打通钱包到合约的完整体验，与真实服务团队共同验证。" },
+        { "en": "SolPact.", "voice": "Sol Pact.", "zh": "SolPact。" },
+        { "en": "Clear milestones. Verifiable rules. Work together, across borders.", "zh": "里程碑清晰。规则可验证。让合作跨越边界。" }
+      ]
+    }
+  ]
+}

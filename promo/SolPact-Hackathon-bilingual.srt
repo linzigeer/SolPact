@@ -1,0 +1,179 @@
+1
+00:00:00,440 --> 00:00:02,694
+You can work with anyone, anywhere.
+你可以与世界任何地方的人合作。
+
+2
+00:00:02,694 --> 00:00:04,970
+Until one question stops everything.
+直到一个问题，让合作停了下来。
+
+3
+00:00:04,970 --> 00:00:07,423
+Who goes first: the money, or the work?
+谁先行动：先付款，还是先交付？
+
+4
+00:00:09,440 --> 00:00:13,729
+For freelancers, studios, and small teams, finding talent is only the beginning.
+对自由职业者、工作室和小团队来说，找到人才只是开始。
+
+5
+00:00:13,729 --> 00:00:18,623
+Unclear deliverables, delayed payments, and upfront risk can turn a good collaboration into a bad deal.
+交付不清、回款拖延、垫资风险，都可能毁掉一次好合作。
+
+6
+00:00:19,574 --> 00:00:21,065
+Meet SolPact.
+这就是 SolPact。
+
+7
+00:00:21,065 --> 00:00:24,432
+Milestone-based USDC escrow for service work on Solana.
+基于 Solana 的服务合作里程碑 USDC 托管协议。
+
+8
+00:00:24,432 --> 00:00:28,117
+Agree. Deliver. Get paid.
+约定清楚。按期交付。获得报酬。
+
+9
+00:00:29,074 --> 00:00:30,893
+We're Oscar and zhaoyan.
+我们是 Oscar 和 zhaoyan。
+
+10
+00:00:30,893 --> 00:00:33,546
+Oscar leads product and system architecture.
+Oscar 负责产品与整体系统架构。
+
+11
+00:00:33,546 --> 00:00:35,918
+zhaoyan builds the smart contracts.
+zhaoyan 负责智能合约。
+
+12
+00:00:35,918 --> 00:00:39,217
+A two-person team, building clearer rules for collaboration.
+两个人，让合作拥有更清晰的规则。
+
+13
+00:00:40,174 --> 00:00:42,688
+Here's a five-hundred-USDC project.
+以一个 500 USDC 的项目为例。
+
+14
+00:00:42,688 --> 00:00:46,343
+Two milestones: two hundred for design, three hundred for development.
+两个里程碑：设计 200，开发 300。
+
+15
+00:00:46,343 --> 00:00:49,598
+The client locks the full budget in the project's own escrow vault.
+项目方把全额预算存入该项目独立的托管金库。
+
+16
+00:00:50,540 --> 00:00:52,968
+The builder submits a deliverable link.
+服务方提交交付物链接。
+
+17
+00:00:52,968 --> 00:00:56,787
+The client approves the milestone, and two hundred USDC moves to the builder.
+项目方确认里程碑，200 USDC 支付给服务方。
+
+18
+00:00:56,787 --> 00:00:59,965
+The remaining three hundred stays reserved for the next stage.
+剩余 300 USDC 留在金库，保障下一阶段。
+
+19
+00:01:01,540 --> 00:01:03,177
+And when things go wrong?
+如果合作出现问题呢？
+
+20
+00:01:03,177 --> 00:01:07,440
+After the agreed response window, an undisputed delivery can be claimed by the builder.
+约定响应期结束后，服务方可主动领取无争议交付的款项。
+
+21
+00:01:07,440 --> 00:01:09,870
+Missed delivery deadlines allow refunds.
+逾期未交付，项目方可以申请退款。
+
+22
+00:01:09,870 --> 00:01:13,766
+Disputes go to the designated arbitrator, who can split the milestone payment.
+发生争议，由指定仲裁人裁定该阶段资金的分配。
+
+23
+00:01:15,540 --> 00:01:16,859
+Why Solana?
+为什么选择 Solana？
+
+24
+00:01:16,859 --> 00:01:19,472
+Every milestone means another on-chain action.
+每一个里程碑，都需要链上操作。
+
+25
+00:01:19,472 --> 00:01:23,882
+Low transaction costs and fast confirmations make frequent, smaller settlements practical.
+低交易成本与快速确认，让高频、小额的分阶段结算更实用。
+
+26
+00:01:24,840 --> 00:01:28,473
+USDC gives both sides a consistent unit for pricing and payment.
+USDC 让双方用统一的单位报价与支付。
+
+27
+00:01:28,473 --> 00:01:33,945
+Native USDC and familiar wallets, including Phantom and Solflare, fit the way people already use Solana.
+原生 USDC，加上 Phantom、Solflare 等熟悉的钱包，更贴近用户习惯。
+
+28
+00:01:34,907 --> 00:01:37,199
+We started with an Avalanche prototype.
+我们从 Avalanche 上的原型出发。
+
+29
+00:01:37,199 --> 00:01:39,890
+Now we're rebuilding natively with Rust and Anchor.
+现在使用 Rust 与 Anchor，重构为 Solana 原生程序。
+
+30
+00:01:39,890 --> 00:01:46,291
+Separate project accounts, milestone accounts, and independent SPL-token vaults make each project's funds easier to isolate and verify.
+项目账户、里程碑账户和独立 SPL 代币金库，让项目资金隔离且可验证。
+
+31
+00:01:47,240 --> 00:01:49,774
+Our program is deployed on Solana Devnet.
+程序已经部署到 Solana Devnet。
+
+32
+00:01:49,774 --> 00:01:53,931
+Recorded tests cover approvals, refunds, arbitration, and account permissions.
+已记录的测试覆盖确认付款、退款、仲裁与账户权限。
+
+33
+00:01:53,931 --> 00:01:57,004
+The browser interface is still being connected to the program.
+浏览器界面与链上程序的接入仍在进行中。
+
+34
+00:01:58,240 --> 00:02:02,375
+Next: complete the wallet-to-contract experience and test with real service teams.
+下一步：打通钱包到合约的完整体验，与真实服务团队共同验证。
+
+35
+00:02:02,375 --> 00:02:03,706
+SolPact.
+SolPact。
+
+36
+00:02:03,706 --> 00:02:09,142
+Clear milestones. Verifiable rules. Work together, across borders.
+里程碑清晰。规则可验证。让合作跨越边界。

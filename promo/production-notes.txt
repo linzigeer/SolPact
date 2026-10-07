@@ -1,0 +1,41 @@
+SolPact — 黑客松宣传片
+
+成片：SolPact-Hackathon.mp4
+时长：129.67 秒
+格式：1920 × 1080，30 fps，H.264 / AAC，16:9，适合投屏与活动提交。
+语言：英文旁白，画面内嵌中英双语字幕。另附中英、英文、中文 SRT。
+团队：Oscar — 产品与系统架构；zhaoyan — 智能合约。姓名拼写已经用户确认。
+声音：合成英文旁白，未克隆成员声音。配乐由 prepare_audio.py 原创合成，无人声。
+画面：程序绘制的动态图形；使用当前项目真实首页截图展示产品界面。
+字体：Space Grotesk / Inter，随附 SIL Open Font License；中文使用系统 Noto Sans CJK。
+
+叙事与事实
+项目当前品牌是 SolPact，工作区目录和 GitHub 仓库保留 MilePay 名称。
+动机来自项目定位：服务合作中交付、付款与信任的矛盾；没有虚构团队亲历、客户、收入或奖项。
+500 USDC / 200 设计 / 300 开发是动画示例，已在画面标注。
+合约支持付款、超时主动领取、逾期未交付退款和指定仲裁人分配；不宣称代码能评定工作质量。
+响应期结束后的领取需要服务方提交交易；未宣称后台自动执行。
+依据制作时仓库记录说明 Devnet 部署及测试范围，未宣称主网上线或全部测试完成。
+浏览器与合约的接入在制作时仍进行中，画面与旁白已说明。
+选择 Solana 的理由结合高频里程碑的成本、确认体验、原生 USDC、钱包与原生账户模型。
+没有使用具体手续费、到账时间、平台抽成或对其他链的夸大比较。
+完整证据对应见 source/facts.json。
+
+文件
+preview.html — 本地播放器，支持章节跳转。
+SolPact-Hackathon-cover.png — 1920 × 1080 封面。
+SolPact-Hackathon-storyboard.jpg — 分镜总览。
+SolPact-Hackathon-script.txt — 带时间轴的双语脚本。
+source/story.json — 可编辑旁白与分镜。
+source/timeline.json — 配音对齐后的时间轴。
+source/assets/narration.wav — 英文旁白轨道。
+source/assets/original-score.wav — 原创音乐轨道。
+source/assets/silent-video.mp4 — 无音轨动画，可用于二次剪辑。
+
+复现
+在 source 目录安装 requirements.txt 中的 Python 依赖与 package.json 中的 npm 依赖。
+运行 python prepare_audio.py；已有配音素材会被复用。
+运行 node render.mjs --stills，再运行 node render.mjs。
+运行 python produce.py 生成最终成片与播放器。
+运行 python validate.py 检查编码、字幕时间轴、音量和抽帧。
+渲染环境需提供 NotoSansCJK-Regular.ttc 和 DejaVuSansMono.ttf；路径在 render.mjs 中。

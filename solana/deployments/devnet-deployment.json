@@ -1,0 +1,14 @@
+{
+  "network": "devnet",
+  "programId": "8yTJg2ze6mPunXu8fgX6DBVwg6kxpLixM2e9DPhcQ5bt",
+  "programData": "AN9TrLDMVcpgHiHQZvDX8YYdTuLxs8iRkZQURCgdfGLf",
+  "deploymentSlot": "508368573",
+  "upgradeAuthority": "8S2bcP66WehuF6cHryfZ7vfFpQWaUhYyAYSy5U3gX4Fy",
+  "artifactSha256": "13e31f61faa42d55894ee65f99642eaa9adfb315b62ef7a951aaf701734d63b3",
+  "artifactBytes": 344680,
+  "mint": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+  "genesis": "EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG",
+  "deploymentSignature": "2U9hxy3Vd4LXTrdfQZdriTtmxtstAGpb584UAFLYBdc7B7G3eXrXaU9Qhy9jApYhPk2fgpjjJYJXJ1EEWKjHd1Ye",
+  "blockTime": 1791355579,
+  "recordedAt": "2026-10-07T07:08:02.315Z"
+}

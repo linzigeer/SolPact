@@ -1,0 +1,34 @@
+{
+  "video": "SolPact-Hackathon.mp4",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "duration_seconds": 129.66666666666666,
+  "decoded_frames": 3890,
+  "all_streams_decoded_without_error": true,
+  "caption_pairs": 36,
+  "subtitle_timing_valid": true,
+  "loudness": {
+    "input_i": "-17.54",
+    "input_tp": "-4.74",
+    "input_lra": "3.50",
+    "input_thresh": "-28.02",
+    "output_i": "-16.16",
+    "output_tp": "-3.22",
+    "output_lra": "3.40",
+    "output_thresh": "-26.59",
+    "normalization_type": "dynamic",
+    "target_offset": "0.16"
+  },
+  "bytes": 11993776,
+  "sha256": "30a05b4bb9a9cc440baea5b9d8f866a3f8d83564a30d96d392ecaba4e9d1162f",
+  "qa_frames": [
+    "close.png",
+    "funded.png",
+    "hook.png",
+    "paid.png",
+    "progress.png",
+    "solana.png",
+    "team.png"
+  ]
+}

@@ -15,9 +15,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "MilePay — Trust less. Ship more.",
+  title: "SolPact — Agree. Deliver. Get paid.",
   description:
-    "面向跨境团队的里程碑 USDC 托管结算。锁定资金，按阶段交付，在 Avalanche 上快速完成结算。",
+    "面向跨境团队的 Solana 里程碑 USDC 托管与结算平台。约定清楚，交付有据，结算有序。支持真实项目创建、入金、交付、验收、退款与争议仲裁。",
 };
 
 export default function RootLayout({

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SolPact · 黑客松宣传片</title>
+<style>
+*{box-sizing:border-box}body{margin:0;color:#edf4fb;background:#080c14;font-family:Inter,system-ui,"Noto Sans CJK SC",sans-serif;padding:36px 24px 60px}main{max-width:1280px;margin:auto}header{display:flex;justify-content:space-between;align-items:center;margin:0 0 26px}.brand{font-size:27px;font-weight:650;letter-spacing:-1px}.brand span{color:#14f195}.tag{font:12px ui-monospace,monospace;color:#93a4bd;letter-spacing:2px}h1{font-size:clamp(25px,4vw,43px);letter-spacing:-1.2px;line-height:1.35;margin:0 0 12px;font-weight:600}.intro{font-size:15px;color:#9babbe;margin:0 0 29px;line-height:1.9}.player{border:1px solid #273344;border-radius:19px;overflow:hidden;background:#0c111c;box-shadow:0 28px 85px #0005}video{width:100%;display:block;aspect-ratio:16/9}.below{display:flex;justify-content:space-between;gap:24px;align-items:center;padding:21px 1px;color:#9babbe;font-size:14px}.links{display:flex;gap:10px;flex-wrap:wrap}a{color:#14f195;text-decoration:none}.links a{padding:10px 15px;border:1px solid #2a3a43;border-radius:10px;background:#101b24}.links a:first-child{background:#14f195;color:#07130d;font-weight:650;border-color:#14f195}.chapters{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.chapter{background:#101923;border:1px solid #273344;color:#c8d5e5;text-align:left;padding:17px 18px;border-radius:12px;cursor:pointer;font:inherit;font-size:14px}.chapter:hover,.chapter.active{border-color:#14f195;background:#12241e;color:#edf4fb}.chapter time{font:12px ui-monospace,monospace;color:#14f195;margin-right:12px}.note{font-size:13px;line-height:1.9;color:#778aa3;margin-top:26px}footer{display:flex;gap:20px;justify-content:space-between;padding-top:20px;color:#718198;font-size:13px}@media(max-width:720px){.chapters{grid-template-columns:1fr 1fr}.below,footer{align-items:flex-start;flex-direction:column}.tag{font-size:10px;letter-spacing:0}.chapter{padding:15px 10px}.chapter time{display:block;margin-bottom:8px}}
+</style>
+<main>
+<header><div class="brand">Sol<span>Pact</span></div><div class="tag">SOLANA HACKATHON · BUILDER STORY</div></header>
+<h1>让每一步交付，都有清晰的约定。</h1>
+<p class="intro">Oscar 与 zhaoyan 的项目故事 · 英文旁白 · 中英双语字幕 · 1080p / 30fps</p>
+<div class="player"><video id="video" controls playsinline preload="metadata" poster="SolPact-Hackathon-cover.png"><source src="SolPact-Hackathon.mp4" type="video/mp4">请下载 MP4 后播放。</video></div>
+<div class="below"><span id="duration">约 2 分 10 秒 · Agree. Deliver. Get paid.</span><div class="links"><a href="SolPact-Hackathon.mp4" download>下载 MP4</a><a href="SolPact-Hackathon-script.txt" download>双语脚本</a><a href="SolPact-Hackathon-bilingual.srt" download>字幕文件</a></div></div>
+<div class="chapters" id="chapters" aria-label="视频章节"></div>
+<p class="note">500 USDC 项目为流程示例；产品界面来自当前项目。片中介绍 Devnet 阶段的实际进展，旁白为合成英文声音。</p>
+<footer><span>Oscar · 产品与系统架构 &nbsp; / &nbsp; zhaoyan · 智能合约</span><a href="https://github.com/murphywuwu/MilePay" target="_blank" rel="noreferrer">查看项目代码 ↗</a></footer>
+</main>
+<script>
+const chapters=__CHAPTERS__;
+const video=document.getElementById('video');
+const buttons=chapters.map((chapter,index)=>{
+ const button=document.createElement('button');button.className='chapter';
+ const time=document.createElement('time');time.textContent=`${Math.floor(chapter.start/60)}:${String(Math.floor(chapter.start%60)).padStart(2,'0')}`;
+ button.append(time,document.createTextNode(chapter.label));
+ button.addEventListener('click',()=>{video.currentTime=chapter.start;video.play().catch(()=>{});});
+ document.getElementById('chapters').append(button);return button;
+});
+video.addEventListener('timeupdate',()=>buttons.forEach((button,index)=>button.classList.toggle('active',video.currentTime>=chapters[index].start&&(index===chapters.length-1||video.currentTime<chapters[index+1].start))));
+video.addEventListener('loadedmetadata',()=>{const seconds=Math.round(video.duration);document.getElementById('duration').textContent=`${Math.floor(seconds/60)} 分 ${seconds%60} 秒 · Agree. Deliver. Get paid.`;});
+</script>
+</html>

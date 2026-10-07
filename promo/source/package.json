@@ -1,0 +1,13 @@
+{
+  "name": "solpact-hackathon-video",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@napi-rs/canvas": "1.0.10"
+  },
+  "scripts": {
+    "render": "node render.mjs",
+    "stills": "node render.mjs --stills"
+  }
+}
