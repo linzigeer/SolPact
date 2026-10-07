@@ -6,17 +6,28 @@ web/out/
 
 # Env
 .env
-.env.local
-web/.env.local
+.env.*
+!.env.example
+!.env.local.example
+*.pem
+*.key
+*keypair*.json
+.devnet/
+.vercel/
 
 # OS / IDE
 .DS_Store
 *.log
 .idea/
 .vscode/
+*.tsbuildinfo
+coverage/
 
 # Demo
 demo-backup.mp4
+/promo/source/ffmpeg-path.txt
+/promo/source/assets/silent-video.mp4
+/promo/source/assets/stills/
 
 # Local reference documents
 /docs/
