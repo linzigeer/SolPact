@@ -1,0 +1,32 @@
+{
+  "name": "solpact-program",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@9.12.3",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "setup:tools": "bash scripts/setup-build-tools.sh",
+    "build": "bash scripts/build.sh",
+    "test": "tsx --test --test-concurrency=1 tests/unit/*.test.ts tests/integration/*.test.ts",
+    "test:unit": "tsx --test --test-concurrency=1 tests/unit/*.test.ts",
+    "test:integration": "tsx --test --test-concurrency=1 tests/integration/*.test.ts",
+    "test:devnet": "tsx scripts/devnet/run.ts",
+    "devnet:prepare": "tsx scripts/devnet/prepare.ts",
+    "devnet:finish": "tsx scripts/devnet/finish.ts --wait",
+    "devnet:status": "tsx scripts/devnet/status.ts",
+    "devnet:record-deployment": "tsx scripts/devnet/record-deployment.ts",
+    "test:rust": "cargo test --locked -p solpact --lib",
+    "lint:rust": "cargo clippy --locked -p solpact --all-targets -- -D clippy::all",
+    "typecheck": "tsc --noEmit",
+    "check": "cargo fmt --all -- --check && corepack pnpm build && corepack pnpm test:rust && corepack pnpm lint:rust && corepack pnpm typecheck && corepack pnpm test"
+  },
+  "devDependencies": {
+    "@coral-xyz/anchor": "0.31.1",
+    "@solana/spl-token": "0.4.14",
+    "@solana/web3.js": "1.98.4",
+    "@types/node": "22.15.30",
+    "litesvm": "0.8.0",
+    "tsx": "4.20.3",
+    "typescript": "5.8.3"
+  }
+}

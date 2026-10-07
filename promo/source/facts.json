@@ -1,0 +1,21 @@
+{
+  "checked_on": "2026-10-07",
+  "brand": { "name": "SolPact", "source": "README.md; web/app/page.tsx" },
+  "team": { "names": ["Oscar", "zhaoyan"], "source": "User request and confirmed spelling" },
+  "purpose": { "value": "Milestone-based USDC escrow and settlement for service work", "source": "README.md; web/app/page.tsx" },
+  "program": { "language": "Rust", "framework": "Anchor", "source": "solana/programs/solpact" },
+  "fund_isolation": { "value": "Project PDA, individual Milestone PDAs, one SPL USDC vault ATA per project", "source": "solana/README.md; solana/programs/solpact/src/contexts" },
+  "settlement": { "value": "Buyer approval; seller-initiated claim after response window if still Submitted; buyer refund for overdue Pending delivery; designated arbitrator split for Disputed delivery", "source": "solana/programs/solpact/src/logic/settlement.rs" },
+  "release_window": { "minimum_seconds": 3600, "maximum_days": 90, "requires_transaction": true, "source": "solana/programs/solpact/src/constants.rs; solana/README.md" },
+  "devnet": { "program_id": "8yTJg2ze6mPunXu8fgX6DBVwg6kxpLixM2e9DPhcQ5bt", "mint": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU", "source": "solana/deployments/devnet-deployment.json" },
+  "recorded_tests": { "transactions": 173, "successful": 128, "expected_negative_failures": 45, "assertions": 79, "report_recorded_at": "2026-10-07T07:16:48.187Z", "auto_release_public_devnet_final_check": "Pending in this report", "source": "solana/deployments/devnet-test-report.md", "video_usage": "Qualitative coverage only; no complete-test claim" },
+  "frontend": { "routed_pages": "Solana preview pages; new transaction modules exist but are not routed at time of inspection", "source": "web/app/dashboard/page.tsx; web/app/project/new/page.tsx; web/app/project/[id]/page.tsx" },
+  "example": { "value": "500 USDC total; 200 design; 300 development", "real_transaction": false, "source": "web/components/SolanaProjectPreview.tsx; hypothetical illustration" },
+  "editorial_limits": [
+    "Do not invent team biographies, photographs, client stories, traction, partners, revenue or awards.",
+    "Do not present a conceptual workflow as a live mainnet or browser transaction recording.",
+    "Do not imply unattended automatic release; the seller submits a claim transaction.",
+    "Do not claim that the contract verifies subjective work quality or eliminates all counterparty or arbitration risks.",
+    "Do not claim specific settlement times, network fees, platform fee comparisons, production readiness or audits."
+  ]
+}

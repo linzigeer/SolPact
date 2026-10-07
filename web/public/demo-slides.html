@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SolPact — Demo Slides</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; font-family: ui-sans-serif, system-ui, sans-serif; background: #020617; color: #f8fafc; }
+    .deck { height: 100%; }
+    .slide { display: none; height: 100%; padding: 64px 80px; flex-direction: column; justify-content: center; }
+    .slide.active { display: flex; }
+    h1 { font-size: 56px; margin: 0 0 16px; }
+    h2 { font-size: 40px; margin: 0 0 24px; color: #34d399; }
+    p, li { font-size: 24px; line-height: 1.5; color: #cbd5e1; }
+    .kicker { letter-spacing: .2em; text-transform: uppercase; color: #34d399; font-size: 14px; margin-bottom: 16px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 32px; }
+    .card { border: 1px solid #334155; border-radius: 16px; padding: 24px; background: #0f172a; }
+    .card b { display: block; font-size: 28px; color: #fff; margin-bottom: 8px; }
+    .hint { position: fixed; bottom: 20px; right: 28px; color: #64748b; font-size: 14px; }
+    code { color: #6ee7b7; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <div class="deck">
+    <section class="slide active">
+      <div class="kicker">Solana · Milestone escrow & settlement</div>
+      <h1>SolPact</h1>
+      <p>跨境企业外包：先付款还是先交付？<br/>双方约定里程碑，按阶段交付与结算。Solana 合约重写中。</p>
+      <div class="row">
+        <div class="card"><b>Upwork / Escrow.com</b>抽 5–20%，到账 3–7 天</div>
+        <div class="card"><b>银行电汇 / L/C</b>$50–200 手续费，中小企业用不起</div>
+        <div class="card"><b>我们</b>Solana USDC 里程碑结算 · 当前为界面预览</div>
+      </div>
+    </section>
+    <section class="slide">
+      <h2>架构</h2>
+      <p>目标架构：Buyer / Seller / Arbitrator → Next.js + Solana 钱包 → Solana Program</p>
+      <div class="row">
+        <div class="card"><b>Solana Program</b>重写里程碑托管、退款与仲裁规则</div>
+        <div class="card"><b>USDC</b>计划使用 Solana SPL Token 托管与结算</div>
+        <div class="card"><b>逃生舱</b>超时自取 / 逾期退款 / 仲裁按 bps 分</div>
+      </div>
+      <p style="margin-top:32px">Solana Program ID：新合约部署后展示<br/>当前提供界面预览，尚未连接 Solana 链上交易</p>
+    </section>
+    <section class="slide">
+      <h2>Roadmap</h2>
+      <p>第一步：重写 Solana 合约，部署 Devnet<br/>第二步：接入 Solana 钱包与 USDC，验证完整结算流程<br/>第三步：完善争议处理、通知与企业合作管理</p>
+      <p style="margin-top:40px;color:#34d399">打开 localhost:3000，预览项目创建、交付与结算界面。</p>
+    </section>
+  </div>
+  <div class="hint">← → 或空格翻页</div>
+  <script>
+    const slides = [...document.querySelectorAll(".slide")];
+    let i = 0;
+    const show = (n) => {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, idx) => s.classList.toggle("active", idx === i));
+    };
+    window.addEventListener("keydown", (e) => {
+      if (["ArrowRight", " ", "PageDown"].includes(e.key)) show(i + 1);
+      if (["ArrowLeft", "PageUp"].includes(e.key)) show(i - 1);
+    });
+  </script>
+</body>
+</html>
